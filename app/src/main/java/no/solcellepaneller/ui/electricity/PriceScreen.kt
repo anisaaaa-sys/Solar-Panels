@@ -46,8 +46,7 @@ import no.solcellepaneller.model.electricity.Region
 @Composable
 fun PriceScreen(
     onBackClick: () -> Unit,
-    repository: ElectricityPriceRepository,
-    isDarkMode: Boolean
+    repository: ElectricityPriceRepository
 ) {
     var selectedRegion by remember { mutableStateOf(Region.OSLO) }
     val viewModel: PriceScreenViewModel = viewModel(
@@ -56,27 +55,22 @@ fun PriceScreen(
 
     val priceUiState by viewModel.priceUiState.collectAsStateWithLifecycle()
 
-    val backgroundColor = if (isDarkMode) Color(0xFF0C1618) else Color(0xFFC3DFE0)
-    val textColor = if (isDarkMode) Color(0xFFF3A712) else Color(0xFF0C1618)
-
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Strømpriser", color = textColor) },
+                title = { Text("Strømpriser") },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.Filled.ArrowBack, contentDescription = "Hjem", tint = textColor)
                     }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = backgroundColor)
-            )
+                }
+	    )
         }
     ) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding)
-                .background(backgroundColor),
+                .padding(padding),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             RegionDropdown(selectedRegion) { newRegion ->
@@ -88,7 +82,7 @@ fun PriceScreen(
                 is PriceUiState.Error -> ErrorScreen()
                 is PriceUiState.Success -> {
                     val prices = (priceUiState as PriceUiState.Success).prices
-                    PriceList(prices, textColor)
+                    PriceList(prices)
                 }
             }
         }
@@ -113,12 +107,6 @@ fun RegionDropdown(
             label = { Text("Velg distrikt", color = Color.Blue) },
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded) },
             textStyle = TextStyle(color = Color.Black, fontSize = 18.sp),
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color(0xFFC3DFE0),
-                unfocusedContainerColor = Color.White,
-                unfocusedIndicatorColor = Color(0xFFE0E0E0),
-                focusedIndicatorColor = Color.Blue
-            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .menuAnchor()
@@ -133,8 +121,7 @@ fun RegionDropdown(
                     onClick = {
                         onRegionSelected(region)
                         expanded = false
-                    },
-                    modifier = Modifier.background(Color(0xFFC3DFE0))
+                    }
                 )
             }
         }
@@ -142,7 +129,7 @@ fun RegionDropdown(
 }
 
 @Composable
-fun PriceList(prices: List<ElectricityPrice>, textColor: Color) {
+fun PriceList(prices: List<ElectricityPrice>) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -151,13 +138,11 @@ fun PriceList(prices: List<ElectricityPrice>, textColor: Color) {
         prices.forEach { price ->
             Text(
                 text = "Pris: ${price.NOK_per_kWh} NOK/kWh",
-                style = MaterialTheme.typography.bodyMedium,
-                color = textColor
+                style = MaterialTheme.typography.bodyMedium
             )
             Text(
                 text = "Tid: ${price.getTimeRange()}",
-                style = MaterialTheme.typography.bodySmall,
-                color = textColor.copy(alpha = 0.7f)
+                style = MaterialTheme.typography.bodySmall
             )
             Spacer(modifier = Modifier.height(8.dp))
         }
@@ -191,4 +176,5 @@ fun ErrorScreen() {
             style = MaterialTheme.typography.bodyLarge
         )
     }
-}
+}:Q
+
