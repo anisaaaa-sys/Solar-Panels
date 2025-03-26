@@ -50,7 +50,8 @@ fun PriceScreen(
 ) {
     var selectedRegion by remember { mutableStateOf(Region.OSLO) }
     val viewModel: PriceScreenViewModel = viewModel(
-        factory = PriceViewModelFactory(repository, selectedRegion.regionCode)
+        factory = PriceViewModelFactory(repository, selectedRegion.regionCode),
+        key = selectedRegion.regionCode
     )
 
     val priceUiState by viewModel.priceUiState.collectAsStateWithLifecycle()
@@ -61,6 +62,7 @@ fun PriceScreen(
                 title = { Text("Strømpriser") },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
+                        val textColor = Color.Blue
                         Icon(Icons.Filled.ArrowBack, contentDescription = "Hjem", tint = textColor)
                     }
                 }
@@ -176,5 +178,5 @@ fun ErrorScreen() {
             style = MaterialTheme.typography.bodyLarge
         )
     }
-}:Q
+}
 

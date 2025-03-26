@@ -33,13 +33,17 @@ class PriceScreenViewModel(
             _priceUiState.value = PriceUiState.Loading
             Log.d("PriceScreenViewModel", "Henter strømpriser for region: $region")
             try {
+                repository.updatePrices(date, region)
                 val prices = repository.getPrices(date, region)
                 if (prices.isNotEmpty()) {
                     _priceUiState.value = PriceUiState.Success(prices)
                     Log.d("PriceScreenViewModel", "Hentet ${prices.size} priser")
                 } else {
                     _priceUiState.value = PriceUiState.Error
-                    Log.e("PriceScreenViewModel", "Feil: Ingen priser funnet for region: $region på $date")
+                    Log.e(
+                        "PriceScreenViewModel",
+                        "Feil: Ingen priser funnet for region: $region på $date"
+                    )
                 }
             } catch (e: Exception) {
                 _priceUiState.value = PriceUiState.Error
