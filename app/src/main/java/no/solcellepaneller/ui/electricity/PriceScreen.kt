@@ -154,20 +154,9 @@ fun PriceList(prices: List<ElectricityPrice>) {
             .fillMaxWidth()
             .padding(12.dp)
     ) {
-        lowestPrice?.let {
-            Text(
-                text = "Laveste pris i dag: ${it.NOK_per_kWh} NOK/kWh",
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Text(
-                text = "Tid: ${it.getTimeRange()}",
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
-
-        if (currentPrice != null) {
-            Text(
-                text = "Pris nå: ${currentPrice.NOK_per_kWh} NOK/kWh",
+	if (currentPrice != null) {
+	    Text(
+		text = "Pris nå: ${currentPrice.NOK_per_kWh} NOK/kWh",
                 style = MaterialTheme.typography.bodyMedium
             )
             Text(
@@ -177,9 +166,22 @@ fun PriceList(prices: List<ElectricityPrice>) {
         } else {
             Text(
                 text = "Ingen pris tilgjengelig for nåværende time",
-                style = MaterialTheme.typography.bodyLarge
+	        style = MaterialTheme.typography.bodyLarge
             )
         }
+	Spacer(modifier = Modifier.height(16.dp))
+
+	 lowestPrice?.let {
+            Text(
+                text = "Laveste pris i dag: ${it.NOK_per_kWh} NOK/kWh",
+                style = MaterialTheme.typography.bodyMedium
+            )
+            Text(
+                text = "Tid: ${it.getTimeRange()}",
+                style = MaterialTheme.typography.bodySmall
+            )
+        }
+	Spacer(modifier = Modifier.height(8.dp))
 
         highestPrice?.let {
             Text(
