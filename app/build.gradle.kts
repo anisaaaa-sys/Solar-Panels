@@ -88,9 +88,6 @@ dependencies {
     implementation("io.ktor:ktor-client-content-negotiation:2.3.6")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.6")
 
-
-
-
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
     implementation ("androidx.navigation:navigation-compose:2.8.9")
 
@@ -100,5 +97,5 @@ dependencies {
     implementation ("com.google.maps.android:android-maps-utils:2.2.0")
 
     //chart dependencies
-    implementation("androidx.compose.charts:charts:1.0.0-alpha01")
+    implementation("co.yml:ycharts:2.1.0")
 }
