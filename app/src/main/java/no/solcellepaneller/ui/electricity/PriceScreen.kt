@@ -1,19 +1,18 @@
 package no.solcellepaneller.ui.electricity
 
 import android.util.Log
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -34,12 +33,15 @@ import androidx.navigation.NavController
 import no.solcellepaneller.data.homedata.ElectricityPriceRepository
 import no.solcellepaneller.model.electricity.ElectricityPrice
 import no.solcellepaneller.model.electricity.Region
+import no.solcellepaneller.ui.handling.ErrorScreen
+import no.solcellepaneller.ui.handling.LoadingScreen
 import no.solcellepaneller.ui.navigation.AppearanceBottomSheet
 import no.solcellepaneller.ui.navigation.BottomBar
 import no.solcellepaneller.ui.navigation.HelpBottomSheet
 import no.solcellepaneller.ui.navigation.TopBar
 import java.time.ZoneId
 import java.time.ZonedDateTime
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -80,6 +82,8 @@ fun PriceScreen(
                 is PriceUiState.Error -> ErrorScreen()
                 is PriceUiState.Success -> {
                     val prices = (priceUiState as PriceUiState.Success).prices
+                    ElectricityPriceChart(prices = prices)
+                    Spacer(modifier = Modifier.height(16.dp))
                     PriceList(prices)
                 }
             }
@@ -105,12 +109,20 @@ fun RegionDropdown(
             value = selectedRegion.displayName,
             onValueChange = {},
             readOnly = true,
-            label = { Text("Velg distrikt", color = Color.Blue) },
+            label = { Text("Velg distrikt", color = MaterialTheme.colorScheme.tertiary) },
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded) },
             textStyle = TextStyle(color = Color.Black, fontSize = 18.sp),
             modifier = Modifier
                 .fillMaxWidth()
-                .menuAnchor()
+                .menuAnchor(),
+            colors = OutlinedTextFieldDefaults.colors(
+                unfocusedContainerColor = MaterialTheme.colorScheme.secondary,
+                focusedBorderColor = MaterialTheme.colorScheme.tertiary,
+                focusedContainerColor = MaterialTheme.colorScheme.background,
+                focusedLabelColor = MaterialTheme.colorScheme.tertiary,
+                unfocusedTextColor = MaterialTheme.colorScheme.tertiary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.tertiary,
+            )
         )
         ExposedDropdownMenu(
             expanded = expanded,
@@ -118,7 +130,7 @@ fun RegionDropdown(
         ) {
             Region.entries.forEach { region ->
                 DropdownMenuItem(
-                    text = { Text(region.displayName) },
+                    text = { Text(region.displayName, color = MaterialTheme.colorScheme.tertiary) },
                     onClick = {
                         onRegionSelected(region)
                         expanded = false
@@ -148,76 +160,7 @@ fun PriceList(prices: List<ElectricityPrice>) {
             .fillMaxWidth()
             .padding(12.dp)
     ) {
-	if (currentPrice != null) {
-	    Text(
-		text = "Pris nå: ${currentPrice.NOK_per_kWh} NOK/kWh",
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Text(
-                text = "Tid: ${currentPrice.getTimeRange()}",
-                style = MaterialTheme.typography.bodySmall
-            )
-        } else {
-            Text(
-                text = "Ingen pris tilgjengelig for nåværende time",
-	        style = MaterialTheme.typography.bodyLarge
-            )
-        }
-    Spacer(modifier = Modifier.height(16.dp))
-    ElectricityPriceChart(prices = prices)
-    Spacer(modifier = Modifier.height(16.dp))
-
-	 lowestPrice?.let {
-            Text(
-                text = "Laveste pris i dag: ${it.NOK_per_kWh} NOK/kWh",
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Text(
-                text = "Tid: ${it.getTimeRange()}",
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
-	Spacer(modifier = Modifier.height(8.dp))
-
-        highestPrice?.let {
-            Text(
-                text = "Høyeste pris i dag: ${it.NOK_per_kWh} NOK/kWh",
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Text(
-                text = "Tid: ${it.getTimeRange()}",
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
-        Spacer(modifier = Modifier.height(8.dp))
+        PriceCard(currentPrice, highestPrice, lowestPrice)
     }
 }
 
-@Composable
-fun LoadingScreen() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            CircularProgressIndicator()
-            Spacer(modifier = Modifier.height(8.dp))
-            Text("Laster inn data, vennligst vent...")
-        }
-    }
-}
-
-@Composable
-fun ErrorScreen() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = "Noe gikk galt! Prøv igjen senere.",
-            style = MaterialTheme.typography.bodyLarge
-        )
-    }
-}
