@@ -1,5 +1,6 @@
 package no.solcellepaneller.ui.electricity
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,17 +23,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import no.solcellepaneller.model.electricity.ElectricityPrice
+import no.solcellepaneller.ui.theme.ThemeMode
+import no.solcellepaneller.ui.theme.ThemeState
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
 @Composable
-fun PriceCard(
-    currentPrice: ElectricityPrice?,
-    highestPrice: ElectricityPrice?,
-    lowestPrice: ElectricityPrice?
-) {
+fun PriceCard(prices: List<ElectricityPrice>) {
+    val currentHour = ZonedDateTime.now(ZoneId.of("Europe/Oslo")).hour
+
+    val currentPrice = prices.find { price ->
+        val startTime = ZonedDateTime.parse(price.time_start)
+        startTime.hour == currentHour
+    } ?: run {
+        Log.e("ERROR", "Fant ingen pris for nåværende time!")
+        null
+    }
+
+    val highestPrice = prices.maxByOrNull { it.NOK_per_kWh }
+    val lowestPrice = prices.minByOrNull { it.NOK_per_kWh }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(2.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
@@ -44,7 +58,8 @@ fun PriceCard(
                     time = it.getTimeRange()
                 )
             }
-            Spacer(modifier = Modifier.height(8.dp))
+
+            Spacer(modifier = Modifier.height(16.dp))
             highestPrice?.let {
                 PriceRow(
                     icon = Icons.Default.ArrowUpward,
@@ -53,7 +68,7 @@ fun PriceCard(
                     time = it.getTimeRange()
                 )
             }
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             lowestPrice?.let {
                 PriceRow(
                     icon = Icons.Default.ArrowDownward,
@@ -77,7 +92,7 @@ fun PriceRow(
         Icon(
             imageVector = icon,
             contentDescription = label,
-            tint = MaterialTheme.colorScheme.primary
+            tint = if (ThemeState.themeMode == ThemeMode.DARK) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
         )
         Spacer(modifier = Modifier.width(8.dp))
         Column {

@@ -4,6 +4,7 @@ import io.ktor.client.engine.cio.*
 import io.ktor.client.request.*
 import io.ktor.http.HttpHeaders
 import io.ktor.client.call.*
+import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.statement.*
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
@@ -18,8 +19,9 @@ import kotlin.math.*
 import java.time.ZonedDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 
-class FrostDataSource {
+class FrostApi {
     val baseUrl = "https://frost-beta.met.no/api/v1/obs/met.no/filter/get"
     val basicAuth = "4868c766-7477-484f-b767-6e5776a60a26:49ee1988-7461-4452-97a3-8ae5cbb133d7" // test auth
     val encodedAuth = java.util.Base64.getEncoder().encodeToString(basicAuth.toByteArray())
@@ -196,7 +198,7 @@ class FrostDataSource {
             smallString += """{"type":"polygon","pos":["""
             coordinateList.forEachIndexed { index2, coordinates ->
                 if (index2 > 0) smallString += ","
-                smallString += """{"lat":${String.format("%.5f", coordinates.first).toDouble()},"lon":${String.format("%.5f", coordinates.second).toDouble()}}"""
+                smallString += """{"lat":${String.format(java.util.Locale.US, "%.4f", coordinates.first).toDouble()},"lon":${String.format(java.util.Locale.US, "%.4f", coordinates.second).toDouble()}}"""
             }
             smallString += "]}"
             bigString += smallString
@@ -677,6 +679,12 @@ class FrostDataSource {
             install(ContentNegotiation) {
                 json()
             }
+//            install(HttpTimeout){
+//                requestTimeoutMillis = 200_000
+//                connectTimeoutMillis = 200_000
+//                socketTimeoutMillis = 200_000
+//            }
+
         }
         //val center = LocationValue(59.91, 10.75) // middle of oslo
         //val center = LocationValue(60.386163, 8.259478) // middle of the mountains

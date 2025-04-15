@@ -1,13 +1,20 @@
 package no.solcellepaneller.ui.theme
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
+import no.solcellepaneller.ui.font.FontSizeState
+import no.solcellepaneller.ui.theme.Typography
 
 // Må legge til 0xFF før HExveerdi
 val darkPrimary =Color(0xFF0c1618)
@@ -48,34 +55,45 @@ private val LightColorScheme = lightColorScheme(
 //    onSurface = Color.White,
 )
 
+enum class ThemeMode {
+    LIGHT, DARK, SYSTEM
+}
+
 object ThemeState {
-    var isDark by mutableStateOf(false)
+    var themeMode by mutableStateOf(ThemeMode.SYSTEM)
 }
 
 @Composable
 fun SolcellepanellerTheme(
-//    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-//    dynamicColor: Boolean = true,
+    fontScale: Float = LocalDensity.current.fontScale,
     content: @Composable () -> Unit
 ) {
-//    val colors = when {
-//        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-//            val context = LocalContext.current
-//            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-//        }
-//        darkTheme -> DarkColorScheme
-//        else -> LightColorScheme
-//    }
-    val colors = if (!ThemeState.isDark) {
-        LightColorScheme
-    } else {
-        DarkColorScheme
+    val systemInDarkTheme = isSystemInDarkTheme()
+
+    val isDark = when (ThemeState.themeMode) {
+        ThemeMode.DARK -> true
+        ThemeMode.LIGHT -> false
+        ThemeMode.SYSTEM -> systemInDarkTheme
     }
+
+    val colors = if (isDark) DarkColorScheme else LightColorScheme
+
+    val baseTypography = Typography()
+
+    val scaledTypography = Typography(
+        bodyLarge = baseTypography.bodyLarge.copy(fontSize = baseTypography.bodyLarge.fontSize * fontScale),
+        bodyMedium = baseTypography.bodyMedium.copy(fontSize = baseTypography.bodyMedium.fontSize * fontScale),
+        bodySmall = baseTypography.bodySmall.copy(fontSize = baseTypography.bodySmall.fontSize * fontScale),
+
+        titleLarge = baseTypography.titleLarge.copy(fontSize = baseTypography.titleLarge.fontSize * fontScale),
+        titleMedium = baseTypography.titleMedium.copy(fontSize = baseTypography.titleMedium.fontSize * fontScale),
+        titleSmall = baseTypography.titleSmall.copy(fontSize = baseTypography.titleSmall.fontSize * fontScale)
+    )
 
     MaterialTheme(
         colorScheme = colors,
-        typography = Typography,
+        typography = scaledTypography,
         content = content
-    )
-}
+    )}
+
+
