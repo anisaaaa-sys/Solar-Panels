@@ -192,10 +192,15 @@ private fun DisplayScreen(
         }
     }
 
-    // Camera and map state
+    val lastLocation = LocationStorage.loadLocation(context)
+    val initialLatLng = lastLocation?.let {
+        LatLng(it.latitude, it.longitude)
+    } ?: LatLng(59.9436145, 10.7182883)
+
     val cameraPositionState = rememberCameraPositionState {
-        position = CameraPosition.fromLatLngZoom(LatLng(59.9436145, 10.7182883), 18f)
+        position = CameraPosition.fromLatLngZoom(initialLatLng, 18f)
     }
+
     val mapUiSettings = remember { MapUiSettings() }
 
     // Check initial permission

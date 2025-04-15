@@ -44,6 +44,7 @@ import no.solcellepaneller.ui.navigation.AppearanceBottomSheet
 import no.solcellepaneller.ui.navigation.BottomBar
 import no.solcellepaneller.ui.navigation.HelpBottomSheet
 import no.solcellepaneller.ui.navigation.TopBar
+import no.solcellepaneller.ui.map.LocationStorage
 
 @Composable
 fun PriceScreen(
@@ -61,19 +62,30 @@ fun PriceScreen(
 
     // Hent lokasjon én gang og sett region automatisk
     LaunchedEffect(Unit) {
-        // Bruk coroutine for å håndtere lokasjonsinnhenting asynkront
         activity?.let {
             val locationService = LocationService(it)
             try {
                 val location = locationService.getCurrentLocation()
                 location?.let {
                     selectedRegion = mapLocationToRegion(it)
+                    LocationStorage.saveLocation(context, it)
+                } ?: run {
+                    val savedLocation = LocationStorage.loadLocation(context)
+                    savedLocation?.let {
+                        selectedRegion = mapLocationToRegion(it)
+                    }
                 }
             } catch (e: Exception) {
                 Log.e("PriceScreen", "Feil ved henting av lokasjon", e)
+                // Fallback to last saved location
+                val savedLocation = LocationStorage.loadLocation(context)
+                savedLocation?.let {
+                    selectedRegion = mapLocationToRegion(it)
+                }
             }
         }
     }
+
 
     val viewModel: PriceScreenViewModel = viewModel(
         factory = PriceViewModelFactory(repository, selectedRegion.regionCode),
