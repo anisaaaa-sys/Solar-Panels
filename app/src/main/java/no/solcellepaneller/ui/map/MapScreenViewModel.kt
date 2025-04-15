@@ -35,8 +35,8 @@ class MapScreenViewModel(
     var efficiencyInput by mutableStateOf("")
 
 
-    private val _coordinates = MutableLiveData<Pair<Double, Double>>()
-    val coordinates: LiveData<Pair<Double, Double>> = _coordinates
+    private val _coordinates = MutableLiveData<Pair<Double, Double>?>()
+    val coordinates: LiveData<Pair<Double, Double>?> get() = _coordinates
 
 
 

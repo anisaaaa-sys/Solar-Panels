@@ -1,16 +1,9 @@
 package no.solcellepaneller.ui.infoscreen
 
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,7 +23,6 @@ import no.solcellepaneller.ui.reusables.ExpandInfoSection
 import no.solcellepaneller.ui.theme.SolcellepanellerTheme
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InfoScreen(navController: NavController, fontScaleViewModel: FontScaleViewModel
 ) {
@@ -39,7 +31,16 @@ fun InfoScreen(navController: NavController, fontScaleViewModel: FontScaleViewMo
         var showAppearance by remember { mutableStateOf(false) }
 
         Scaffold(
-            topBar = { TopBar(navController, text = stringResource(R.string.info_title)) },
+            topBar = {
+                var backClicked by remember { mutableStateOf(false) }
+                TopBar(
+                    navController = navController,
+                    text = stringResource(R.string.info_title),
+                    onBackClick = { backClicked = true },
+                    modifier = Modifier,
+                    backClick = !backClicked
+                )
+            },
             bottomBar = {
                 BottomBar(
                     onHelpClicked = { showHelp = true },

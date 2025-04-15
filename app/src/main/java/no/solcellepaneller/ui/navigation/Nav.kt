@@ -46,7 +46,10 @@ import no.solcellepaneller.ui.result.ShowYearlySavings
 import no.solcellepaneller.ui.result.WeatherViewModel
 import no.solcellepaneller.ui.font.FontScaleViewModel
 import androidx.compose.material3.OutlinedIconButton
-import no.solcellepaneller.ui.result.ShowProduce
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 
 @Composable
 fun Nav(navController: NavHostController, fontScaleViewModel: FontScaleViewModel) {
@@ -129,7 +132,12 @@ fun BottomBar(
             icon = { Icon(Icons.Filled.Info, contentDescription = "Information") },
             label = { Text("Info") },
             selected = false,
-            onClick = { navController.navigate("info_screen") }
+            onClick = {
+                if (navController.currentDestination?.route != "info_screen") {
+                    navController.navigate("info_screen")
+                }
+            }
+
         )
         NavigationBarItem(
             icon = { Icon(Icons.Filled.Settings, contentDescription = "Appearance") },
@@ -150,6 +158,8 @@ fun TopBar(
     modifier: Modifier = Modifier,
     height: Dp = 90.dp
 ) {
+    var backClicked by remember { mutableStateOf(false) }
+
     Box(modifier = modifier.fillMaxWidth()) {
         TopAppBar(
             modifier = Modifier.fillMaxWidth().height(height),
@@ -161,11 +171,18 @@ fun TopBar(
             title = {},
             navigationIcon = {
                 if (backClick) {
-                    OutlinedIconButton(onClick = {
-                        onBackClick?.invoke()
-                        navController.popBackStack()
-                     },modifier=modifier.padding(top = 10.dp),
-                        border = BorderStroke(2.dp,MaterialTheme.colorScheme.tertiary)) {
+                    OutlinedIconButton(
+                        onClick = {
+                            if (!backClicked) {
+                                backClicked = true
+                                onBackClick?.invoke()
+                                navController.popBackStack()
+                            }
+                        },
+                        enabled = !backClicked,
+                        modifier = modifier.padding(top = 10.dp),
+                        border = BorderStroke(2.dp, MaterialTheme.colorScheme.tertiary)
+                    ) {
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Go back"

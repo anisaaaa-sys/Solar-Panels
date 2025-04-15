@@ -42,7 +42,7 @@ fun HomeScreen(
     }
 
     Scaffold(
-        topBar = { TopBar(navController=navController, text ="*IKON og APPNAVN*" ,backClick = false, height = 150.dp) },
+        topBar = { TopBar(navController=navController, text ="IKON og APPNAVN" ,backClick = false, height = 150.dp) },
         bottomBar = {
             BottomBar(
             onHelpClicked = { showHelp = true },
