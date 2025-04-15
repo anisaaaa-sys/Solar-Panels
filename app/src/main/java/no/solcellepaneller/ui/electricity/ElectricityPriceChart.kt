@@ -23,6 +23,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import co.yml.charts.axis.AxisData
 import co.yml.charts.common.model.Point
 import co.yml.charts.ui.barchart.BarChart
@@ -66,16 +67,19 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
         )
     }
 
-    //Prepare X-axis (hours)
+    // Prepare X-axis (hours) - Show fewer labels to prevent crowding
     val xAxisData = AxisData.Builder()
-        .axisStepSize(12.dp)
-        .steps(prices.size / 2)
-        .labelData { i -> if (i % 2 == 0) "%02d:00".format(i) else "" }
+        .axisStepSize(14.dp)
+        .steps(prices.size / 2) // Showing fewer steps (was /2)
+        .labelData { i ->
+            if (i % 2 == 0) "%02d:00".format(i) else ""
+        }
         .axisLabelColor(MaterialTheme.colorScheme.tertiary)
         .axisLineColor(MaterialTheme.colorScheme.tertiary)
-        .axisLabelAngle(35f)
-        .bottomPadding(24.dp)
-        .startPadding(40.dp)
+        .axisLabelAngle(40f)
+        .bottomPadding(32.dp)
+//        .startPadding(45.dp)
+//        .endPadding(20.dp)
         .build()
 
     //Prepare Y-axis (price)
@@ -103,10 +107,11 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
         Text(text = if (chartType == ChartType.LINE) "Vis søylediagram" else "Vis linjediagram")
     }
 
+    // Increased overall card height to provide more space for axis labels
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(325.dp)
+            .height(350.dp)
             .padding(4.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
         colors = CardColors(
@@ -116,7 +121,11 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
             disabledContainerColor = MaterialTheme.colorScheme.primary
         )
     ) {
-        BoxWithConstraints(modifier = Modifier.height(300.dp)) {
+        BoxWithConstraints(
+            modifier = Modifier
+                .height(320.dp) // Increased from 300.dp
+                .padding(top = 8.dp, start = 8.dp, end = 8.dp, bottom = 16.dp) // Added bottom padding
+        ) {
             when (chartType) {
                 ChartType.LINE -> {
                     val lineChartData = LineChartData(
@@ -125,8 +134,8 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
                                 Line(
                                     dataPoints = points,
                                     LineStyle(color = if (ThemeState.themeMode == ThemeMode.DARK) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary),
-                                    IntersectionPoint(color = if (ThemeState.themeMode == ThemeMode.DARK) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.tertiary,),
-                                    SelectionHighlightPoint(color = if (ThemeState.themeMode == ThemeMode.DARK) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary,),
+                                    IntersectionPoint(color = if (ThemeState.themeMode == ThemeMode.DARK) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.tertiary),
+                                    SelectionHighlightPoint(color = if (ThemeState.themeMode == ThemeMode.DARK) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary),
                                     ShadowUnderLine(
                                         alpha = 0.5f,
                                         brush = Brush.verticalGradient(
@@ -143,14 +152,14 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
                         xAxisData = xAxisData,
                         yAxisData = yAxisData,
                         gridLines = GridLines(color = Color.LightGray),
-                        backgroundColor = MaterialTheme.colorScheme.surface
+                        backgroundColor = MaterialTheme.colorScheme.surface,
+                        bottomPadding = 30.dp
                     )
 
                     LineChart(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(300.dp)
-                            .padding(8.dp),
+                            .height(300.dp),
                         lineChartData = lineChartData
                     )
                 }
@@ -165,25 +174,25 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
                             barWidth = 10.dp
                         ),
                         backgroundColor = MaterialTheme.colorScheme.surface,
+                        paddingEnd = 16.dp // Added extra padding at the end
                     )
 
                     BarChart(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(300.dp)
-                            .padding(8.dp),
+                            .height(300.dp),
                         barChartData = barChartData
                     )
                 }
             }
 
-            // X-axis name
+            // X-axis name - moved down to provide more space
             Text(
                 text = "Tid (timer)",
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
-                    .offset(y = 12.dp),
+                    .offset(y = 22.dp), // Increased from 12.dp
                 color = MaterialTheme.colorScheme.tertiary
             )
 
