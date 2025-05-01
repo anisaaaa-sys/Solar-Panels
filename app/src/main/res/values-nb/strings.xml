@@ -1,17 +1,16 @@
 <resources>
-    <string name="app_name">Solcellepaneller</string>
-    <string name="Test">Appen er i norsk</string>
+    <string name="app_name">SolcellepanelerApp</string>
 
     <!--Home Screen-->
     <string name="home"> Hjemme</string>
     <string name="install_panels"> Installer paneler</string>
-    <string name="saved_locations"> Lagrede posisjoner</string>
+    <string name="last_location">Siste posisjon (trenger bedre navn)</string>
     <string name="prices"> Strømpriser </string>
     <string name="help"> Hjelp</string>
-    <string name="appereance"> Utseende</string>
-    <string name="dark_mode">🌑 Bytt til mørkmodus </string>
-    <string name="light_mode">☀️ Bytt til lysmodus </string>
-    <string name="language">Bytt til Engelsk🇬🇧</string>
+    <string name="appearance"> Utseende</string>
+    <string name="dark_mode">Mørkmodus </string>
+    <string name="light_mode">Lysmodus </string>
+    <string name="language">Bytt til Engelsk</string>
     <string name="font_size"> Bytt skriftstørrelse</string>
     <string name="go_back"> Tilbake </string>
     <string name="close"> Lukk</string>
@@ -20,9 +19,11 @@
     <!--Info Screen-->
     <string name='intro_title'>Introduksjon</string>
     <string name="intro_content">
-        Å installere solcellepaneler kan være en smart investering både økonomisk og miljømessig – men det avhenger av hvor du bor, hvor mye sol du får, og hva strømprisene er der du bor.
-        Denne appen hjelper deg å vurdere om det lønner seg å bytte til solenergi, basert på værdata, strømpriser og beliggenhet. Her forklarer vi det viktigste du bør vite før du tar en beslutning.
+    Å installere solcellepaneler kan være en smart investering – både økonomisk og miljømessig.
+    Men hvor lønnsomt det er, avhenger av hvor du bor, hvor mye sol du får, og hva strømprisene er i ditt område.
+    Denne appen hjelper deg med å vurdere om solenergi er verdt det for deg, basert på værdata, strømpriser og din lokasjon.\n\n
     </string>
+
     <string name='price_title'>Strøm priser</string>
     <string name='price_content'>
         Strømprisene i Norge varierer avhengig av region, tid på året og det totale energibehovet.
@@ -30,6 +31,7 @@
         Ved å sammenligne nåværende og historiske strømpriser, hjelper denne appen deg med å vurdere hvor mye penger du kan spare ved å produsere din egen strøm med solcellepaneler.
         Prisene måles vanligvis i øre/kWh, og varierer på tvers av ulike prissoner i landet.
     </string>
+
     <string name='pros_and_cons_title'>Fordeler og ulemper </string>
     <string name='pros_and_cons_content'>
         Solcellepaneler har blitt et populært alternativ for mange som ønsker å produsere sin egen strøm, spare penger og bidra til et mer bærekraftig energiforbruk. Men som med alle investeringer, finnes det både fordeler og ulemper du bør være klar over.\n
@@ -48,12 +50,14 @@
         • Lang tilbakebetalingstid: Det kan ta mange år før investeringen betaler seg.\n
         • Tekniske begrensninger: Ikke alle bygninger er like godt egnet for montering av solcellepaneler.\n
     </string>
+
     <string name="money_saved_title">Penger spart</string>
     <string name="money_saved_content">
         Appen beregner hvor mye penger du potensielt kan spare ved å installere solcellepaneler, basert på værforhold der du bor og historiske strømpriser.
         Ved å sammenligne hvor mye strøm du kan produsere med solcellepaneler med hvor mye strøm koster i dag, får du et estimat på årlige besparelser.
         Jo mer sol du får og jo høyere strømprisene er, desto mer kan du spare. Beregningen gir deg bedre grunnlag for å vurdere om investeringen i solceller er lønnsom for deg.
     </string>
+
 
     <string name="cabin_title"> Hytte</string>
     <string name="cabin_content">
@@ -62,6 +66,14 @@
         Denne appen hjelper deg med å vurdere hvor mye solenergi hytta di potensielt kan produsere, og om det er tilstrekkelig for dine behov.
     </string>
 
+    <string name="support_title">Støtteordninger</string>
+    <string name="support_content">
+        Du kan være kvalifisert for økonomisk støtte fra Enova, en statlig aktør som gir tilskudd til energieffektive tiltak – inkludert solcelleanlegg.
+        Gjennom sitt program for boligeiere kan du få inntil 32 500 kr i støtte totalt, avhengig av anleggets størrelse og effektivitet.
+        For mer informasjon og søknad, gå til:
+    </string>
+
+
     <!--Map Screen-->
     <string name="enter_address">Skriv inn adresse</string>
     <string name="search_coordinates">Søk koordinater</string>
@@ -69,7 +81,7 @@
     <string name="show_area">Vis område</string>
     <string name="confirm_drawing">Bekreft tegning</string>
     <string name="remove_last_point">Fjern siste punkt</string>
-    <string name="remove_points">Fjern punkter</string>
+    <string name="remove_points">Fjern alle punkter</string>
     <string name="selected_position">Valgt posisjon</string>
     <string name="latitude">Breddegrad</string>
     <string name="longitude">Lengdegrad</string>
@@ -77,11 +89,11 @@
     <string name="cancel">Tilbakestill</string>
 
     <!--Additional Input-->
-    <string name="area_label">Areal (m²)</string>
+    <string name="area_label">Takareal (m²)</string>
     <string name="draw_area">Tegn areal</string>
-    <string name="slope_label">Vinkel (°)</string>
-    <string name="direction_label">Retning</string>
-    <string name="efficiency_label">Effektivitet (%)</string>
+    <string name="slope_label">Vinkel på taket fra 0 - 90°</string>
+    <string name="direction_label">Retningen panelet vender mot</string>
+    <string name="efficiency_label">Effektiviteten til panelene, vanligvis mellom 16-20 %</string>
     <string name="coordinates_label">Koordinater (fra kart):</string>
     <string name="coordinates_unavailable">Ingen koordinater tilgjengelig</string>
     <string name="closest_weather_station">Nærmeste værstasjon:</string>
@@ -93,46 +105,82 @@
     <string name="tech_problems_content">Problemer med appen</string>
     <string name="how_to_draw">Hvordan tegne i kartet</string>
     <string name="need_help_drawing">Trenger du hjelp med å tegne?</string>
-    <string name="help_draw">Draw on the map</string>
     <string name="tech_problems_title">Problemer</string>
+    <string name="help_draw">Draw on the map</string>
+    <string name="north">N</string>
+    <string name="northeast">NØ</string>
+    <string name="east">Ø</string>
+    <string name="southeast">SØ</string>
+    <string name="south">S</string>
+    <string name="southwest">SV</string>
+    <string name="west">V</string>
+    <string name="northwest">NV</string>
+    <string name="roofAreaHelp"> Det totale arealet på taket som er egnet for solcellepaneler, målt i kvadratmeter (m²) </string>
+    <string name="roofAngleHelp"> Også kjent som helning. Dette er hvor bratt taket er. Paneler fungerer best når de er vinklet mot solen.</string>
+    <string name="panelEfficencyHelp"> Hvor godt panelene omdanner sollys til strøm. Vanligvis mellom 16–20 % </string>
+    <string name="panelDirectionHelp">Også kalt azimuth. Sørvendt gir som regel best effekt i Norge, men appen beregner dette ut fra din lokasjon.</string>
 
     <!--Result Screen-->
     <string name="results"> Resultater </string>
-    <string name="angle"> 📐 Vinkel: </string>
-    <string name="direction"> 🧭 Retning: </string>
-    <string name="effectivity"> ⚡ Effektivitet: </string>
+    <string name="angle"> Vinkel: </string>
+    <string name="direction"> Retning: </string>
+    <string name="effectivity"> Effektivitet: </string>
     <string name="data_not_added"> Data ikke lagt til</string>
-    <string name="get_data"> 📡 Hent data </string>
+    <string name="get_data">Hent data </string>
     <string name="loading"> Laster inn data, vennligst vent… </string>
 
-    <string name="month"> Måned </string>
-    <string name="global_radiation"> ☼ Global stråling: </string>
-    <string name="avg_cloud_cover"> ☁️ Gjennomsnittlig skydekke: </string>
-    <string name="avg_snow_cover"> ☃ Gjennomsnittlig snødekke: </string>
-    <string name="temp_factor"> 🔥 Temperaturfaktor: </string>
-    <string name="adj_radiation"> ⚡ Justert stråling: </string>
-    <string name="estimated_energy_prod"> 🔋 Estimert produsert energi: %.2f kWh </string>
-    <string name="estimated_powerpr_hour"> 📊 Estimert kraft produsert per time: </string>
     <string name="address_not_found">Adresse ikke funnet, prøv igjen</string>
     <string name="follow_system">Følg systemtema</string>
     <string name="navigate_results">Gå til resultater</string>
+
     <string name="map_title">Kart</string>
     <string name="info_title">Informasjon</string>
 
     <string name="additional_input">Tilleggsinformasjon</string>
 
-    <string name="january">Januar</string>
-    <string name="february">Februar</string>
-    <string name="march">Mars</string>
-    <string name="april">April</string>
-    <string name="may">Mai</string>
-    <string name="june">Juni</string>
-    <string name="july">Juli</string>
-    <string name="august">August</string>
-    <string name="september">September</string>
-    <string name="october">Oktober</string>
-    <string name="november">November</string>
-    <string name="december">Desember</string>
+    <string name="yearly_savings_label">Årlig Sparing</string>
+    <string name="show_one_month">Vis Èn Måned</string>
+    <string name="show_all_months">Vis Alle Måneder</string>
+    <string name="selected_month">Måned: %1$s</string>
+    <string name="savedGlobe"> Hurra! Du har spart kloden for: %.2f kg CO₂ denne måneden</string>
 
+    <!-- Months -->
+    <string name="month_january">Januar</string>
+    <string name="month_february">Februar</string>
+    <string name="month_march">Mars</string>
+    <string name="month_april">April</string>
+    <string name="month_may">Mai</string>
+    <string name="month_june">Juni</string>
+    <string name="month_july">Juli</string>
+    <string name="month_august">August</string>
+    <string name="month_september">September</string>
+    <string name="month_october">Oktober</string>
+    <string name="month_november">November</string>
+    <string name="month_december">Desember</string>
+
+    <string name="current_location">Nåværende plassering</string>
+    <string name="search">Søk</string>
+
+    <string name="frost_mode">Frost</string>
+    <string name="home_bottom_bar">Hjem</string>
+
+    <!--Cards-->
+    <string name="month"> Måned </string>
+    <string name="global_radiation">Global stråling: %.2f kWh/m²</string>
+    <string name="avg_cloud_cover"> Gjennomsnittlig skydekke: %.2f</string>
+    <string name="avg_snow_cover">Gjennomsnittlig snødekke: %.2f</string>
+    <string name="temp_factor">Temperaturfaktor: %.2f °C</string>
+    <string name="adj_radiation">Justert stråling: %.2f kWh/m²</string>
+    <string name="estimated_energy_prod">Estimert produsert energi: %.2f kWh </string>
+    <string name="estimated_powerpr_hour">Estimert kraft produsert per time: %.2f kWh</string>
+    <string name="show_monthly_savings">Vis Din Månedlige Sparing I %1$s</string>
+
+    <!--Savings Screen-->
+    <string name="yearly_savings">Spares årlig</string>
+    <string name="yearly_savings_text">Du vil spare <b>%.2f kroner</b> i året på strøm fra solcellepaneler</string>
+    <string name="monthly_savings">Sparing i: <b>%1$s</b></string>
+    <string name="monthly_savings_text">Du vil spare <b>%1$.2f kroner</b>  i <b>%2$s</b>  på strøm fra solcellepaneler</string>
+
+    <string name="area_drawn">Tegnet areal:</string>
 
 </resources>

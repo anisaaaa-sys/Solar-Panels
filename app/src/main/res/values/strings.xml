@@ -1,25 +1,29 @@
 <resources>
-    <string name="app_name">Solcellepaneler</string>
-    <string name="Test">This app is in English</string>
+    <string name="app_name">SolcellepanelerApp</string>
 
     <!--Home Screen-->
     <string name="home"> Home</string>
     <string name="install_panels"> Install solar panels</string>
-    <string name="saved_locations"> Saved locations</string>
+    <string name="last_location"> Last location (trenger bedre navn)</string>
     <string name="prices"> Electricity prices </string>
     <string name="help">Help</string>
-    <string name="appereance"> Appearance</string>
-    <string name="dark_mode">🌑 Change to darkmode </string>
-    <string name="light_mode">☀️ Change to lightmode </string>
-    <string name="language">Change to Norwegian🇳🇴</string>
-    <string name="font_size">Change font size</string>
+    <string name="appearance"> Appearance</string>
+    <string name="dark_mode"> Dark mode  </string>
+    <string name="light_mode"> Light mode  </string>
+    <string name="language"> Change to Norwegian</string>
+    <string name="font_size"> Change font size</string>
     <string name="go_back"> Back </string>
     <string name="close"> Close</string>
 
 
     <string name='intro_title'>Introduction</string>
-    <string name="intro_content">Installing solar panels can be a smart investment both financially and environmentally – but it depends on where you live, how much sun you get, and what the electricity prices are where you live.
-    This app helps you assess whether switching to solar energy is worth it, based on weather data, electricity prices, and location. Here we explain the most important things you should know before making a decision.</string>
+    <string name="intro_content">
+    Installing solar panels can be a smart investment both financially and environmentally
+    – but it depends on where you live, how much sun you get, and what the electricity prices are where you live.
+    This app helps you assess whether switching to solar energy is worth it, based on weather data, electricity prices, and location.
+    Here we explain the most important things you should know before making a decision.\n\n
+    </string>
+
 
     <string name="price_title">Electricity Price</string>
     <string name="price_content">
@@ -61,6 +65,13 @@
         This app helps you assess how much solar power you can potentially produce and whether it is sufficient for your needs.
     </string>
 
+    <string name="support_title">Support Schemes</string>
+    <string name="support_content">
+        You may be eligible for financial support from Enova, a Norwegian government agency that provides funding for energy-efficient solutions such as solar panels.
+        Through their homeowner program, you can get up to 32,500 NOK in support for installing solar power systems, depending on system size and efficiency.
+        For more information and to apply, visit:
+    </string>
+
     <!--Map Screen-->
     <string name="enter_address">Enter Address</string>
     <string name="search_coordinates">Search Coordinates</string>
@@ -68,7 +79,7 @@
     <string name="show_area">Show Area</string>
     <string name="confirm_drawing">Confirm Drawing</string>
     <string name="remove_last_point">Remove Last Point</string>
-    <string name="remove_points">Remove Points</string>
+    <string name="remove_points">Remove All Points</string>
     <string name="selected_position">Selected Position</string>
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
@@ -76,11 +87,11 @@
     <string name="cancel">Cancel</string>
 
     <!--Additional Input-->
-    <string name="area_label">Area (m²)</string>
+    <string name="area_label">Roof Area (m²)</string>
     <string name="draw_area">Draw areal</string>
-    <string name="slope_label">Angle (°)</string>
-    <string name="direction_label">Direction</string>
-    <string name="efficiency_label">Efficiency (%)</string>
+    <string name="slope_label">Angle of the roof from 0 – 90° </string>
+    <string name="direction_label">The direction the panel is facing</string>
+    <string name="efficiency_label">Efficiency of the panels, usually between 16–20%</string>
     <string name="coordinates_label">Coordinates (from map): </string>
     <string name="coordinates_unavailable">No coordinates available</string>
     <string name="closest_weather_station">Closest weather station:</string>
@@ -90,29 +101,32 @@
     <string name="dismiss">Close</string>
     <string name="need_help">Need help?</string>
     <string name="need_help_drawing">Need help with drawing?</string>
-    <string name="help_draw">Tegne i kartet</string>
+    <string name="help_draw">Draw on the map</string>
     <string name="tech_problems_title">Problems</string>
     <string name="tech_problems_content">Problems with app</string>
     <string name="how_to_draw">How to draw in the map</string>
+    <string name="north">N</string>
+    <string name="northeast">NE</string>
+    <string name="east">E</string>
+    <string name="southeast">SE</string>
+    <string name="south">S</string>
+    <string name="southwest">SW</string>
+    <string name="west">W</string>
+    <string name="northwest">NW</string>
+    <string name="roofAreaHelp">The total area of the roof suitable for solar panels, measured in square meters (m²).</string>
+    <string name="roofAngleHelp">Also known as the slope. This is how steep the roof is. Panels perform best when angled toward the sun.</string>
+    <string name="panelEfficencyHelp">How efficiently the panels convert sunlight into electricity. Usually between 16–20%.</string>
+    <string name="panelDirectionHelp">Also called azimuth. South-facing usually gives the best performance in Norway, but the app calculates this based on your location.</string>
+
 
     <!--Result Screen-->
     <string name="results"> Results </string>
-    <string name="angle">📐 Angle: </string>
-    <string name="direction"> 🧭 Direction: </string>
-    <string name="effectivity"> ⚡ Effectivity:  </string>
+    <string name="angle">Angle: </string>
+    <string name="direction">Direction: </string>
+    <string name="effectivity">Effectivity:  </string>
     <string name="data_not_added"> Data not added: </string>
-    <string name="get_data"> 📡 Get data </string>
+    <string name="get_data">Get data </string>
     <string name="loading"> Loading Data, please wait…</string>
-
-    <string name="month"> Month: </string>
-    <string name="global_radiation"> ☼ Global Radiation: </string>
-    <string name="avg_cloud_cover"> ☁️ Average Cloud Cover: </string>
-    <string name="avg_snow_cover"> ☃ Average Snow Cover: </string>
-    <string name="temp_factor"> 🔥 Temperature Factor: </string>
-    <string name="adj_radiation"> ⚡ Adjusted Radiation: </string>
-    <string name="estimated_energy_prod"> 🔋 Estimated Energy Produced: %.2f kWh </string>
-    <string name="estimated_powerpr_hour"> 📊 Estimated Power Produced per Hour: </string>
-
 
     <string name="address_not_found">Address not found, try again</string>
     <string name="follow_system">Follow system theme</string>
@@ -122,18 +136,48 @@
     <string name="additional_input">Additional input</string>
     <string name="prod">Production</string>
 
-    <string name="january">January</string>
-    <string name="february">February</string>
-    <string name="march">March</string>
-    <string name="april">April</string>
-    <string name="may">May</string>
-    <string name="june">June</string>
-    <string name="july">July</string>
-    <string name="august">August</string>
-    <string name="september">September</string>
-    <string name="october">October</string>
-    <string name="november">November</string>
-    <string name="december">December</string>
+    <string name="frost_mode">Frost</string>
+    <string name="home_bottom_bar">Home</string>
 
+    <string name="yearly_savings_label">Yearly Savings</string>
+    <string name="show_one_month">Show One Month</string>
+    <string name="show_all_months">Show All Months</string>
+    <string name="selected_month">Month: %1$s</string>
+    <string name="savedGlobe"> Hooray! You have saved the planet: %.2f kg CO₂ this month</string>
+
+    <!--Months-->
+    <string name="month_january">January</string>
+    <string name="month_february">February</string>
+    <string name="month_march">March</string>
+    <string name="month_april">April</string>
+    <string name="month_may">May</string>
+    <string name="month_june">June</string>
+    <string name="month_july">July</string>
+    <string name="month_august">August</string>
+    <string name="month_september">September</string>
+    <string name="month_october">October</string>
+    <string name="month_november">November</string>
+    <string name="month_december">December</string>
+
+    <string name="current_location">Current Location</string>
+    <string name="search">Search</string>
+
+    <!--Cards-->
+    <string name="month"> Month: </string>
+    <string name="global_radiation">Global Radiation: %.2f kWh/m²</string>
+    <string name="avg_cloud_cover"> Average Cloud Cover: %.2f</string>
+    <string name="avg_snow_cover">Average Snow Cover: %.2f</string>
+    <string name="temp_factor">Temperature Factor: %.2f °C</string>
+    <string name="adj_radiation">Adjusted Radiation: %.2f kWh/m²</string>
+    <string name="estimated_energy_prod">Estimated Energy Produced: %.2f kWh </string>
+    <string name="estimated_powerpr_hour">Estimated Power Produced per Hour: %.2f kW</string>
+    <string name="show_monthly_savings">Show Your Savings In %1$s</string>
+
+    <!--Savings Screen-->
+    <string name="yearly_savings">Saved annually</string>
+    <string name="yearly_savings_text">You will save <b>%.2f</b> kroner per year on electricity from solar panels</string>
+    <string name="monthly_savings">Savings in: <b>%1$s</b></string>
+    <string name="monthly_savings_text">You will save <b>%1$.2f kroner</b> in <b>%2$s</b> with electricity from solar panels</string>
+    <string name="area_drawn">Size of area:</string>
 
 </resources>

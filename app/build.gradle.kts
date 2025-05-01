@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "no.solcellepaneller"
+    namespace = "no.solcellepanelerApp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "no.solcellepaneller"
+        applicationId = "no.solcellepanelerApp"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -48,6 +48,12 @@ android {
 
 dependencies {
 
+    implementation("androidx.compose.ui:ui:1.5.15")
+    implementation("androidx.compose.material3:material3:1.1.2")
+    implementation("androidx.compose.foundation:foundation:1.5.0")
+    implementation("androidx.activity:activity-compose:1.7.2")
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -82,23 +88,23 @@ dependencies {
     implementation(libs.kotlin.stdlib)
     //Project independencies
 
-    implementation ("io.ktor:ktor-client-core:2.3.6")
+    implementation("io.ktor:ktor-client-core:2.3.6")
     implementation("io.ktor:ktor-client-cio:2.3.6")
     implementation("io.ktor:ktor-client-okhttp:2.3.6")
     implementation("io.ktor:ktor-client-content-negotiation:2.3.6")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.6")
 
 
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
-    implementation ("androidx.navigation:navigation-compose:2.8.9")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation("androidx.navigation:navigation-compose:2.8.9")
 
     //mapdependencies
     implementation("com.google.maps.android:maps-compose:4.2.0")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
-    implementation ("com.google.maps.android:android-maps-utils:2.2.0")
+    implementation("com.google.maps.android:android-maps-utils:2.2.0")
 
     //Chart dependencies
-    implementation(libs.ycharts)
+    implementation("co.yml:ycharts:2.1.0")
 
     //Icons dependency
     implementation(libs.androidx.material.icons.extended.android)
@@ -114,4 +120,17 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.appcompat.resources)
     implementation("com.airbnb.android:lottie-compose:6.1.0")
+
+
+    implementation("androidx.compose.ui:ui-text-google-fonts:1.7.8")
+
+//    implementation("com.google.accompanist:accompanist-flowlayout:<latest_version>")
+    implementation("com.google.accompanist:accompanist-flowlayout:0.28.0")
+//    implementation("androidx.compose.ui:ui:1.3.0")
+//    implementation("androidx.compose.material3:material3:1.0.0")
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+    testImplementation("io.mockk:mockk:1.13.8")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("io.ktor:ktor-client-mock:2.3.4")
 }
