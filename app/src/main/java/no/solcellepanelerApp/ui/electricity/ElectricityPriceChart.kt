@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import co.yml.charts.axis.AxisData
 import co.yml.charts.common.model.Point
 import co.yml.charts.ui.barchart.BarChart
@@ -78,13 +79,17 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
 
     //Prepare X-axis (hours) - Showing fewer labels to prevent crowding
     val xAxisData = AxisData.Builder()
-        .axisStepSize(12.dp)
-        .steps(prices.size / 2)//Showing fewer steps
-        .labelData { i -> if (i % 2 == 0) "%02d".format(i) else "" }
+        .axisStepSize(14.dp)
+        .steps(prices.size / 2) // Showing fewer steps (was /2)//Showing fewer steps
+        .labelData { i ->
+            if (i % 2 == 0) "%02d".format(i) else ""
+        }
         .axisLabelColor(MaterialTheme.colorScheme.tertiary)
         .axisLineColor(MaterialTheme.colorScheme.tertiary)
         .axisLabelAngle(40f)
         .bottomPadding(32.dp)
+//        .startPadding(45.dp)
+//        .endPadding(20.dp)
         .build()
 
     //Prepare Y-axis (price)
@@ -124,6 +129,7 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
         Text(text = if (chartType == ChartType.LINE) "Vis søylediagram" else "Vis linjediagram")
     }
 
+    // Increased overall card height to provide more space for axis labels
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -217,7 +223,6 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
                     LineChart(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(8.dp)
                             .height(300.dp),
                         lineChartData = lineChartData
                     )
@@ -236,25 +241,7 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
                     BarChart(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(8.dp)
                             .height(300.dp),
-//                            .pointerInput(Unit) {
-//                                detectTapGestures { offset ->
-//                                    val clickedIndex = bars.indexOfFirst { bar ->
-//                                        // Check if the click is within the bar's x-range (adjust for bar width)
-//                                        println("Tap detected at offset: $offset")  // Add this line to verify the gesture is triggered
-//
-//                                        val barStartX = bar.point.x - barStyle.barWidth.toPx() / 2
-//                                        val barEndX = bar.point.x + barStyle.barWidth.toPx() / 2
-//                                        offset.x in barStartX..barEndX
-//                                    }
-//
-//                                    if (clickedIndex != -1) {
-//                                        val bar = bars[clickedIndex]
-//                                        selectedPoint.value = Point(bar.point.x, bar.point.y)
-//                                    }
-//                                }
-//                            },
                         barChartData = barChartData
                     )
                 }
@@ -263,7 +250,7 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
 
 
 
-            // X-axis name
+            // X-axis name - moved down to provide more space
             Text(
                 text = "Tid (timer)",
                 style = MaterialTheme.typography.bodySmall,
