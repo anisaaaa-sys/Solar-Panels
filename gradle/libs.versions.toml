@@ -1,11 +1,17 @@
 [versions]
+<<<<<<< HEAD
 accompanistPager = "0.24.13-rc"
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 accompanistPermissions = "0.34.0"
 activityComposeVersion = "1.4.0"
 agp = "8.8.2"
 appcompat = "1.7.0"
+<<<<<<< HEAD
 appcompatVersion = "1.0.2"
 coreSplashscreen = "1.0.1"
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 kotlin = "2.0.0"
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "2.0.0" }
 coreKtx = "1.15.0"
@@ -43,6 +49,7 @@ uiToolingPreview = "1.7.8"
 
 runtimeLivedata = "1.7.8"
 ycharts = "2.1.0"
+<<<<<<< HEAD
 roomRuntimeAndroid = "2.7.1"
 pagerVersion = "1.7.2"
 
@@ -50,11 +57,18 @@ pagerVersion = "1.7.2"
 androidx-appcompat-v102 = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
 foundation-pager = { group = "androidx.compose.foundation", name = "foundation", version.ref = "pagerVersion" }
 
+=======
+
+[libraries]
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-appcompat-resources = { module = "androidx.appcompat:appcompat-resources", version.ref = "appcompat" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+<<<<<<< HEAD
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 androidx-material = { module = "androidx.compose.material:material", version.ref = "material" }
 
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
@@ -98,7 +112,10 @@ ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
 
 androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
 ycharts = { module = "co.yml:ycharts", version.ref = "ycharts" }
+<<<<<<< HEAD
 androidx-room-runtime-android = { group = "androidx.room", name = "room-runtime-android", version.ref = "roomRuntimeAndroid" }
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

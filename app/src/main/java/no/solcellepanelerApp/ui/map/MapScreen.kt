@@ -1,6 +1,7 @@
 package no.solcellepanelerApp.ui.map
 
 import android.Manifest
+<<<<<<< HEAD
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Canvas
@@ -8,6 +9,18 @@ import android.location.Location
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+=======
+import android.app.Activity
+import android.content.Context
+import android.content.pm.PackageManager
+import android.graphics.Canvas
+import android.location.Geocoder
+import android.location.Location
+import android.util.Log
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,6 +36,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+<<<<<<< HEAD
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.DeleteForever
 import androidx.compose.material.icons.filled.Search
@@ -32,6 +46,14 @@ import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
+=======
+import androidx.compose.material.icons.filled.MyLocation
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -47,14 +69,20 @@ import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+<<<<<<< HEAD
 import androidx.compose.runtime.collectAsState
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+<<<<<<< HEAD
 import androidx.compose.runtime.saveable.rememberSaveable
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
@@ -64,10 +92,15 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+<<<<<<< HEAD
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
+=======
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
@@ -80,7 +113,10 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+<<<<<<< HEAD
 import com.google.maps.android.compose.CameraPositionState
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapProperties
 import com.google.maps.android.compose.MapType
@@ -90,11 +126,17 @@ import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.Polygon
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.google.maps.android.compose.rememberMarkerState
+<<<<<<< HEAD
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import no.solcellepanelerApp.MainActivity
 import no.solcellepanelerApp.R
 import no.solcellepanelerApp.model.electricity.Region
+=======
+import kotlinx.coroutines.launch
+import no.solcellepanelerApp.R
+import no.solcellepanelerApp.data.location.LocationService
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import no.solcellepanelerApp.ui.font.FontScaleViewModel
 import no.solcellepanelerApp.ui.font.FontSizeState
 import no.solcellepanelerApp.ui.navigation.AdditionalInputBottomSheet
@@ -103,6 +145,7 @@ import no.solcellepanelerApp.ui.navigation.BottomBar
 import no.solcellepanelerApp.ui.navigation.HelpBottomSheet
 import no.solcellepanelerApp.ui.navigation.TopBar
 import no.solcellepanelerApp.ui.result.WeatherViewModel
+<<<<<<< HEAD
 import no.solcellepanelerApp.ui.reusables.SimpleTutorialOverlay
 import no.solcellepanelerApp.ui.theme.darkGrey
 import no.solcellepanelerApp.ui.theme.lightBlue
@@ -110,6 +153,13 @@ import no.solcellepanelerApp.ui.theme.lightGrey
 import no.solcellepanelerApp.ui.theme.orange
 import no.solcellepanelerApp.util.RequestLocationPermission
 import no.solcellepanelerApp.util.fetchCoordinates
+=======
+import no.solcellepanelerApp.ui.theme.ThemeMode
+import no.solcellepanelerApp.ui.theme.ThemeState
+import no.solcellepanelerApp.ui.theme.lightBlue
+import no.solcellepanelerApp.ui.theme.orange
+import java.util.Locale
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
 
 @Composable
@@ -125,6 +175,7 @@ fun MapScreen(
     var showHelp by remember { mutableStateOf(false) }
     var showAppearance by remember { mutableStateOf(false) }
 
+<<<<<<< HEAD
     var showMapOverlay by remember { mutableStateOf(true) }
     var showDrawOverlay by remember { mutableStateOf(false) }
 
@@ -149,6 +200,15 @@ fun MapScreen(
             message = stringResource(R.string.map_draw_overlay)
         )
     }
+=======
+    LaunchedEffect(trigger) {
+        if (trigger > lastShownTrigger) {
+            snackbarHostState.showSnackbar("Address not found, try again")
+            lastShownTrigger = trigger
+        }
+    }
+
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
@@ -177,14 +237,21 @@ fun MapScreen(
                 navController = navController,
                 weatherViewModel = weatherViewModel,
                 snackbarHostState = snackbarHostState,
+<<<<<<< HEAD
                 modifier = Modifier.padding(contentPadding),
                 showDrawOverlay = showDrawOverlay,
                 setShowDrawOverlay = { showDrawOverlay = it }
+=======
+                modifier = Modifier.padding(contentPadding)
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
             )
         }
     }
     HelpBottomSheet(
+<<<<<<< HEAD
         navController = navController,
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         visible = showHelp,
         onDismiss = { showHelp = false },
     )
@@ -201,8 +268,11 @@ fun DisplayScreen(
     viewModel: MapScreenViewModel,
     navController: NavController,
     weatherViewModel: WeatherViewModel,
+<<<<<<< HEAD
     showDrawOverlay: Boolean,
     setShowDrawOverlay: (Boolean) -> Unit,
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     snackbarHostState: SnackbarHostState,
     modifier: Modifier = Modifier,
 ) {
@@ -212,7 +282,10 @@ fun DisplayScreen(
     val coroutineScope = rememberCoroutineScope()
     var address by remember { mutableStateOf("") }
     val coordinates by viewModel.coordinates.observeAsState()
+<<<<<<< HEAD
     val height by viewModel.height.collectAsState()
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     val polygonPoints = viewModel.polygondata
     var isPolygonvisible by remember { mutableStateOf(false) }
     var drawingEnabled by remember { mutableStateOf(false) }
@@ -222,6 +295,7 @@ fun DisplayScreen(
     var showMissingLocationDialog by remember { mutableStateOf(false) }
     var area by remember { mutableStateOf("") }
 
+<<<<<<< HEAD
     val activity = (context as? MainActivity)
     var selectedRegion by rememberSaveable { mutableStateOf<Region?>(null) }
     var currentLocation by remember { mutableStateOf<Location?>(null) }
@@ -237,11 +311,27 @@ fun DisplayScreen(
         if (locationPermissionGranted && activity != null) {
             val location = fetchCoordinates(context, activity)
             currentLocation = location
+=======
+    //Location permission state
+    var locationPermissionGranted by remember { mutableStateOf(false) }
+    val locationPermissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        locationPermissionGranted = isGranted
+        if (!isGranted) {
+            coroutineScope.launch {
+                snackbarHostState.showSnackbar("Location permission required")
+            }
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         }
     }
 
     //Camera and map state
+<<<<<<< HEAD
     var cameraPositionState = rememberCameraPositionState {
+=======
+    val cameraPositionState = rememberCameraPositionState {
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         position = CameraPosition.fromLatLngZoom(LatLng(59.9436145, 10.7182883), 18f)
     }
 
@@ -249,8 +339,11 @@ fun DisplayScreen(
         MapUiSettings()
     }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     LaunchedEffect(Unit) {
         locationPermissionGranted = ContextCompat.checkSelfPermission(
             context,
@@ -258,7 +351,10 @@ fun DisplayScreen(
         ) == PackageManager.PERMISSION_GRANTED
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     Box(modifier = Modifier.fillMaxSize()) {
         GoogleMap(
             modifier = Modifier
@@ -345,6 +441,17 @@ fun DisplayScreen(
             }
         }
 
+<<<<<<< HEAD
+=======
+//        funker ikke rn
+//        var detectedAddress by remember { mutableStateOf("") }
+//        LocationButton(
+//            locationPermissionGranted = locationPermissionGranted,
+//            onAddressDetected = { address ->
+//                detectedAddress = address
+//            }
+//        )
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
         //Search bar
 
@@ -363,7 +470,11 @@ fun DisplayScreen(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
+<<<<<<< HEAD
                 AddressInputField(
+=======
+                AdressInputField(
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                     value = address,
                     onValueChange = {
                         address = it
@@ -407,7 +518,10 @@ fun DisplayScreen(
             }
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -415,10 +529,20 @@ fun DisplayScreen(
                 .zIndex(1f),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+<<<<<<< HEAD
             val coroutineScope = rememberCoroutineScope()
 
             Spacer(
                 modifier = Modifier.height(80.dp)
+=======
+
+            Spacer(modifier = Modifier.height(60.dp))
+
+            val coroutineScope = rememberCoroutineScope()
+
+            Spacer(
+                modifier = Modifier.height(20.dp)
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
             )
 
             if (selectedCoordinates != null) {
@@ -467,6 +591,7 @@ fun DisplayScreen(
                 )
 
             }
+<<<<<<< HEAD
 
             if (!drawingEnabled) {
                 Box(
@@ -506,11 +631,28 @@ fun DisplayScreen(
                     }
                 }
             }
+=======
+            if (showMissingLocationDialog) {
+                LocationNotSelectedDialog(
+                    coordinates = coordinates,
+                    onDismiss = { showMissingLocationDialog = false },
+                )
+            }
+
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
             if (drawingEnabled) {
                 DrawingControls(
                     polygonPoints = polygonPoints,
                     viewModel = viewModel,
                     toggleBottomSheet = { showBottomSheet = true },
+<<<<<<< HEAD
+=======
+                    onCancel = {
+                        drawingEnabled = false
+                        isPolygonvisible = false
+                        viewModel.removePoints()
+                    },
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                     onToggleVisibility = { isPolygonvisible = !isPolygonvisible }
                 )
             }
@@ -527,12 +669,16 @@ fun DisplayScreen(
             onDismiss = { showBottomSheet = false },
             onStartDrawing = {
                 drawingEnabled = true
+<<<<<<< HEAD
                 setShowDrawOverlay(true)
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                 selectedCoordinates = null
                 viewModel.removePoints()
                 index = 0
             },
             coordinates = coordinates,
+<<<<<<< HEAD
             height = height,
             area = viewModel.areaInput,
             navController = navController,
@@ -540,13 +686,36 @@ fun DisplayScreen(
             weatherViewModel = weatherViewModel,
             selectedRegion = selectedRegion,
             onRegionSelected = { selectedRegion = it },
+=======
+            area = viewModel.areaInput,
+            navController = navController,
+            viewModel = viewModel,
+            weatherViewModel = weatherViewModel
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         )
     }
 }
 
 
+<<<<<<< HEAD
 @Composable
 fun AddressInputField(
+=======
+fun getAddressFromLocation(context: Context, location: Location): String? {
+    val geocoder = Geocoder(context, Locale.getDefault())
+    return try {
+        val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+        addresses?.firstOrNull()?.getAddressLine(0)
+    } catch (e: Exception) {
+        Log.e("Geocoder", "Feil ved henting av adresse", e)
+        null
+    }
+}
+
+
+@Composable
+fun AdressInputField(
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     value: String,
     onValueChange: (String) -> Unit,
     label: String,
@@ -577,6 +746,17 @@ fun LocationNotSelectedDialog(
     onDismiss: () -> Unit,
 ) {
     var showDialog by remember { mutableStateOf(coordinates == null) }
+<<<<<<< HEAD
+=======
+//    var showHelpBottomSheet by remember { mutableStateOf(false) }
+//    if (showHelpBottomSheet) {
+//        HelpBottomSheet(
+//            visible = true,
+//            onDismiss = { showHelpBottomSheet = false },
+//            expandSection = "draw",
+//        )
+//    }
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
     if (showDialog && coordinates == null) {
         val currentDensity = LocalDensity.current
@@ -596,6 +776,19 @@ fun LocationNotSelectedDialog(
                 },
                 confirmButton = {
 
+<<<<<<< HEAD
+=======
+
+//                Button( //Ga ikke mening å ha det på denne skjermen, men burde være på tegneskjermen
+//                    onClick ={
+//                        showHelpBottomSheet = true
+//                    }
+//                ) {
+//                  Text(stringResource(id = R.string.need_help_drawing))
+//                }
+
+
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                 },
                 dismissButton = {
                     Button(
@@ -607,23 +800,47 @@ fun LocationNotSelectedDialog(
             )
         }
     }
+<<<<<<< HEAD
+=======
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(id = R.string.no_location_title)) },
+        text = { Text(stringResource(id = R.string.no_location_message)) },
+        confirmButton = {},
+        dismissButton = {
+            Button(onClick = onDismiss) {
+                Text(stringResource(id = R.string.dismiss))
+            }
+        }
+    )
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 }
 
 @Composable
 private fun DrawingControls(
     polygonPoints: List<LatLng>,
     viewModel: MapScreenViewModel,
+<<<<<<< HEAD
+=======
+    onCancel: () -> Unit,
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     onToggleVisibility: () -> Unit,
     toggleBottomSheet: () -> Unit,
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
+<<<<<<< HEAD
 //            .padding(10.dp)
+=======
+            .padding(16.dp)
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     ) {
         Column(
             modifier = Modifier
                 .align(Alignment.BottomStart)
+<<<<<<< HEAD
 //                .width(300.dp)
         ) {
             var areaShown by remember { mutableStateOf(false) }
@@ -802,6 +1019,150 @@ private fun DrawingControls(
 
 }
 
+=======
+        ) {
+
+            Column {
+                var areaShown by remember { mutableStateOf(false) }
+                if (areaShown) {
+                    Button(
+                        onClick = {
+                            viewModel.areaInput =
+                                viewModel.calculateAreaOfPolygon(polygonPoints).toString()
+                            toggleBottomSheet()
+                        },
+                        colors = ButtonColors(
+                            containerColor = MaterialTheme.colorScheme.background,
+                            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            disabledContainerColor = Color(color = 0xFF4CAF50),
+                            disabledContentColor = Color(color = 0xFF4CAF50)
+                        )
+                    ) {
+                        Text(text = stringResource(id = R.string.confirm_drawing))
+                    }
+                }
+
+                if (polygonPoints.size > 2) {
+                    Button(
+                        onClick = {
+                            onToggleVisibility()
+                            areaShown = true
+                        },
+                        colors = ButtonColors(
+                            containerColor = MaterialTheme.colorScheme.tertiary,
+                            contentColor = MaterialTheme.colorScheme.background,
+                            disabledContainerColor = Color(color = 0xFF4CAF50),
+                            disabledContentColor = Color(color = 0xFF4CAF50)
+                        )
+                    ) {
+                        Text(text = stringResource(id = R.string.show_area))
+                    }
+                }
+
+                if (polygonPoints.isNotEmpty()) {
+                    Button(
+                        onClick = {
+                            viewModel.removeLastPoint()
+                            onToggleVisibility
+                        },
+                        colors = ButtonColors(
+                            containerColor = if (ThemeState.themeMode == ThemeMode.LIGHT) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onErrorContainer,
+                            contentColor = if (ThemeState.themeMode == ThemeMode.LIGHT) MaterialTheme.colorScheme.onError else MaterialTheme.colorScheme.background,
+                            disabledContainerColor = Color(color = 0xFF4CAF50),
+                            disabledContentColor = Color(color = 0xFF4CAF50)
+                        )
+                    )
+
+                    {
+                        Text(text = stringResource(id = R.string.remove_last_point))
+                    }
+                    Button(
+                        onClick = {
+                            viewModel.removePoints()
+                            onToggleVisibility()
+                        },
+                        colors = ButtonColors(
+                            containerColor = if (ThemeState.themeMode == ThemeMode.LIGHT) MaterialTheme.colorScheme.onErrorContainer else MaterialTheme.colorScheme.tertiary,
+                            contentColor = if (ThemeState.themeMode == ThemeMode.LIGHT) MaterialTheme.colorScheme.background else MaterialTheme.colorScheme.background,
+                            disabledContainerColor = Color(color = 0xFF4CAF50),
+                            disabledContentColor = Color(color = 0xFF4CAF50)
+                        )
+                    ) {
+                        Text(text = stringResource(id = R.string.remove_points))
+                    }
+                }
+            }
+            Button(
+                onClick = {
+                    onCancel
+                },
+                colors = ButtonColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    contentColor = MaterialTheme.colorScheme.tertiary,
+                    disabledContainerColor = Color(color = 0xFF4CAF50), //random farge som ikke brukes
+                    disabledContentColor = Color(color = 0xFF4CAF50)
+                )
+            ) {
+                Text(text = stringResource(id = R.string.cancel))
+            }
+        }
+    }
+
+}
+
+@Composable
+fun LocationButton(
+    locationPermissionGranted: Boolean,
+    onAddressDetected: (String) -> Unit,
+) {
+    val context = LocalContext.current
+    val activity = context as? Activity
+    val scope = rememberCoroutineScope()
+    //Current location button
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(end = 16.dp, bottom = 150.dp)
+        ) {
+            Button(
+                onClick = {
+                    if (locationPermissionGranted && activity != null) {
+                        scope.launch {
+                            val locationService = LocationService(activity)
+                            try {
+                                val location = locationService.getCurrentLocation()
+                                location?.let {
+                                    val address = getAddressFromLocation(context, it)
+                                    address?.let {
+                                        onAddressDetected(it)
+                                    }
+                                }
+                            } catch (e: Exception) {
+                                Log.e("MapScreen", "Feil ved henting av lokasjon", e)
+                            }
+                        }
+                    }
+                },
+                modifier = Modifier.size(56.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                )
+            ) {
+                Icon(
+                    imageVector = Icons.Default.MyLocation,
+                    contentDescription = stringResource(id = R.string.current_location)
+                )
+            }
+        }
+    }
+}
+
+
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 // hentet fra https://stackoverflow.com/questions/70598043/how-to-use-custom-icon-of-google-maps-marker-in-compose
 
 @Composable
@@ -861,6 +1222,7 @@ fun bitmapDescriptor(
     val scaledBitmap = originalBitmap.scale(width, height, false)
     return BitmapDescriptorFactory.fromBitmap(scaledBitmap)
 }
+<<<<<<< HEAD
 
 fun mapUseLocation(
     currentLocation: Location?,
@@ -885,3 +1247,5 @@ fun mapUseLocation(
 }
 
 
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b

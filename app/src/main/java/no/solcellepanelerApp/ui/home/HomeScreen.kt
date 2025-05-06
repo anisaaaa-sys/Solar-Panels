@@ -1,5 +1,6 @@
 package no.solcellepanelerApp.ui.home
 
+<<<<<<< HEAD
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
@@ -8,6 +9,10 @@ import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
+=======
+import android.location.Location
+import android.util.Log
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,6 +22,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+<<<<<<< HEAD
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -24,18 +30,32 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+=======
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+<<<<<<< HEAD
 import androidx.compose.runtime.mutableIntStateOf
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+<<<<<<< HEAD
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -43,6 +63,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+=======
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -65,6 +90,7 @@ import no.solcellepanelerApp.ui.handling.LoadingScreen
 import no.solcellepanelerApp.ui.navigation.AppearanceBottomSheet
 import no.solcellepanelerApp.ui.navigation.BottomBar
 import no.solcellepanelerApp.ui.navigation.HelpBottomSheet
+<<<<<<< HEAD
 import no.solcellepanelerApp.ui.result.WeatherViewModel
 import no.solcellepanelerApp.ui.reusables.MyDisplayCard
 import no.solcellepanelerApp.ui.reusables.MyNavCard
@@ -77,6 +103,15 @@ import java.time.ZonedDateTime
 
 
 @SuppressLint("DefaultLocale")
+=======
+import no.solcellepanelerApp.ui.navigation.TopBar
+import no.solcellepanelerApp.ui.result.WeatherViewModel
+import no.solcellepanelerApp.ui.reusables.MyNavCard
+import no.solcellepanelerApp.util.RequestLocationPermission
+import no.solcellepanelerApp.util.fetchCoordinates
+import java.time.ZonedDateTime
+
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
@@ -95,17 +130,27 @@ fun HomeScreen(
     var selectedRegion by rememberSaveable { mutableStateOf<Region?>(null) }
     var currentLocation by remember { mutableStateOf<Location?>(null) }
     var locationPermissionGranted by remember { mutableStateOf(false) }
+<<<<<<< HEAD
     Log.d("HomeScreen", "currentLocation: $currentLocation")
     var dataFetched by remember { mutableStateOf(false) }
 
     val currentHour by remember { mutableIntStateOf(ZonedDateTime.now().minusHours(2).hour) }
+=======
+    var dataFetched by remember { mutableStateOf(false) }
+
+    var currentHour by remember { mutableStateOf(ZonedDateTime.now().minusHours(2).hour) }
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     //var currentHourValue by remember { mutableStateOf(radiationArray[currentHour]) }
     // The value for the current hour
     Log.e("HomeScreen", "currentHour: $currentHour")
     Log.e("HomeScreen", "radiationArray: ${radiationArray.joinToString(", ")}")
     var currentHourValueny by remember { mutableStateOf<Double?>(null) }
     Log.e("HomeScreen", "currentHourValueny: $currentHourValueny")
+<<<<<<< HEAD
     LaunchedEffect(currentHour, radiationArray) {
+=======
+    LaunchedEffect(currentHour,radiationArray) {
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         radiationArray.let {
             if (it.isNotEmpty()) {
                 it[currentHour]?.let { currentHourValue ->
@@ -125,6 +170,7 @@ fun HomeScreen(
         return
     }
 
+<<<<<<< HEAD
 //    //Request location permission and fetch region
 //    RequestLocationPermission { region ->
 //        selectedRegion = region
@@ -166,11 +212,33 @@ fun HomeScreen(
             currentLocation!!.latitude,
             currentLocation!!.longitude,
             "mean(surface_downwelling_shortwave_flux_in_air PT1H)"
+=======
+    //Request location permission and fetch region
+    RequestLocationPermission { region ->
+        selectedRegion = region
+        locationPermissionGranted = true
+
+    }
+
+        LaunchedEffect(locationPermissionGranted) {
+            if(locationPermissionGranted && activity!=null){
+            val location= fetchCoordinates(context,activity)
+            currentLocation = location
+
+        }}
+
+    Log.d("HomeScreen", "currentLocation: $currentLocation")
+    if(currentLocation!=null && !dataFetched){
+        Log.e("HomeScreen", "currentLocation is now not null and is: ${currentLocation!!.latitude}, ${currentLocation!!.longitude}")
+        weatherViewModel.fetchRimData(
+            currentLocation!!.latitude,currentLocation!!.longitude,"mean(surface_downwelling_shortwave_flux_in_air PT1H)"
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         )
         dataFetched = true
         Log.d("HomeScreen", "radiationArray: $radiationArray")
     }
 
+<<<<<<< HEAD
     val isDark = when (ThemeState.themeMode) {
         ThemeMode.DARK -> true
         ThemeMode.LIGHT -> false
@@ -200,6 +268,15 @@ fun HomeScreen(
                     )
                 }
             }
+=======
+    Scaffold(
+        topBar = {
+            TopBar(
+                navController = navController,
+                text = "*IKON og APPNAVN*",
+                backClick = false,
+            )
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         },
         bottomBar = {
             BottomBar(
@@ -213,6 +290,7 @@ fun HomeScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(contentPadding)
+<<<<<<< HEAD
 //                .background(Color.Blue)
             ,
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -222,22 +300,37 @@ fun HomeScreen(
             MyNavCard(
                 text = stringResource(id = R.string.install_panels_title),
                 desc = stringResource(id = R.string.install_panels_desc),
+=======
+                .padding(5.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            MyNavCard(
+                text = stringResource(id = R.string.install_panels),
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                 route = "map",
                 navController = navController,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(250.dp),
+<<<<<<< HEAD
                 style = MaterialTheme.typography.displaySmall,
 //                content = { PanelAnimation() },
                 color = MaterialTheme.colorScheme.tertiary
 //                color = MaterialTheme.colorScheme.primary
 //                color = MaterialTheme.colorScheme.secondary
+=======
+                style = MaterialTheme.typography.displayLarge,
+                content = { PanelAnimation() },
+                color = MaterialTheme.colorScheme.tertiary
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
             )
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(1.dp)
             ) {
+<<<<<<< HEAD
 
                 MyDisplayCard(
                     modifier = Modifier
@@ -291,11 +384,46 @@ fun HomeScreen(
                 )
 
                 MyNavCard(
+=======
+                Card(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(400.dp)
+                        .align(Alignment.CenterVertically)
+                        .padding(16.dp) // Add padding around the card
+                         // Add shadow for a nice elevation effect
+                    , // Rounded corners // Elevation for a more card-like appearance
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(16.dp), // Padding inside the card to separate text from edges
+                         // Center text vertically
+                        horizontalAlignment = Alignment.CenterHorizontally // Center text horizontally
+                    ) {
+
+                        Text("LIVE ENERGY:",style = MaterialTheme.typography.displaySmall, // Use a larger, bolder text style
+                            color = MaterialTheme.colorScheme.onSurface)
+                        Text(
+                            text = "${currentHourValueny  ?: "No data"} Kwh", // Optional fallback for null
+                            style = MaterialTheme.typography.displaySmall, // Use a larger, bolder text style
+                            color = MaterialTheme.colorScheme.primary // Use an appropriate text color
+                        )
+                        LightningAnimation()
+
+                    }
+                }
+
+
+                MyNavCard(
+                    //text = stringResource(id = R.string.prices),
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                     route = "prices",
                     navController = navController,
                     modifier = Modifier
                         .weight(1f)
                         .height(400.dp),
+<<<<<<< HEAD
                     style = MaterialTheme.typography.headlineSmall,
                     content = {
                         Column(
@@ -315,6 +443,28 @@ fun HomeScreen(
                                 Spacer(modifier = Modifier.height(10.dp))
 
 
+=======
+                    style = MaterialTheme.typography.displaySmall,
+                    //content = { LightningAnimation() },
+                    content = {
+                        Column(modifier = Modifier
+                            .fillMaxSize()
+                            .padding(10.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Top
+                        ) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    text = "Sjekk strømprisene!",
+                                    style = MaterialTheme.typography.titleLarge,
+                                    color = MaterialTheme.colorScheme.primary
+                                )
+                                Spacer(modifier = Modifier.height(10.dp))
+
+                                //Spacer(modifier = Modifier.height(10.dp))
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                                 // Show loading screen until the region is selected
                                 if (selectedRegion == null) {
                                     LoadingScreen()
@@ -336,8 +486,12 @@ fun HomeScreen(
                                         is PriceUiState.Loading -> LoadingScreen()
                                         is PriceUiState.Error -> ErrorScreen()
                                         is PriceUiState.Success -> {
+<<<<<<< HEAD
                                             val prices =
                                                 (priceUiState as PriceUiState.Success).prices
+=======
+                                            val prices = (priceUiState as PriceUiState.Success).prices
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                                             Column {
                                                 HomePriceCard(prices, selectedRegion)
                                             }
@@ -349,11 +503,17 @@ fun HomeScreen(
                     },
                     color = MaterialTheme.colorScheme.primary
                 )
+<<<<<<< HEAD
 
             }
 
             HelpBottomSheet(
                 navController = navController,
+=======
+            }
+
+            HelpBottomSheet(
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                 visible = showHelp,
                 onDismiss = { showHelp = false },
             )
@@ -395,6 +555,7 @@ fun PanelAnimation() {
 }
 
 @Composable
+<<<<<<< HEAD
 fun ElectricityTowers() {
 
     val isDark = when (ThemeState.themeMode) {
@@ -406,6 +567,10 @@ fun ElectricityTowers() {
 
     val animationFile =
         if (isDark) "electricity_tower_dark.json" else "electricity_tower_light.json"
+=======
+fun LightningAnimation() {
+    val animationFile = "lightningBolt_anim.json"
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
     val composition by rememberLottieComposition(
         LottieCompositionSpec.Asset(animationFile)
@@ -418,21 +583,32 @@ fun ElectricityTowers() {
 
     Box(
         modifier = Modifier
+<<<<<<< HEAD
 //            .background(Color.Blue)
         ,
         contentAlignment = Alignment.Center
+=======
+//        .background(color = Color.Blue)
+            .height(500.dp)
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     ) {
         LottieAnimation(
             composition = composition,
             progress = { progress },
             modifier = Modifier
+<<<<<<< HEAD
                 .width(150.dp)
                 .aspectRatio(400.dp / 400.dp),
 //                .background(Color.Red)
+=======
+                .size(150.dp)
+
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         )
     }
 }
 
+<<<<<<< HEAD
 @Composable
 fun SunAnimation(value: Double) {
     val animationFile = when {
@@ -469,3 +645,5 @@ fun SunAnimation(value: Double) {
     Log.d("SunAnimation", "Animating with value: $value")
 }
 
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b

@@ -1,6 +1,9 @@
 package no.solcellepanelerApp.ui.reusables
 
+<<<<<<< HEAD
 import androidx.compose.foundation.clickable
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,7 +23,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+<<<<<<< HEAD
 import androidx.compose.ui.res.painterResource
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
@@ -98,6 +104,7 @@ fun ExpandInfoSectionContent(title: String, content: @Composable () -> Unit) {
             }
         }
     }
+<<<<<<< HEAD
 }
 
 @Composable
@@ -137,4 +144,6 @@ fun MySection(
 
         }
     }
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 }

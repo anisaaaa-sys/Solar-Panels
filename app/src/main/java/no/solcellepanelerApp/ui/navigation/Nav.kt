@@ -39,11 +39,19 @@ import no.solcellepanelerApp.ui.home.HomeScreen
 import no.solcellepanelerApp.ui.infoscreen.InfoScreen
 import no.solcellepanelerApp.ui.map.MapScreen
 import no.solcellepanelerApp.ui.map.MapScreenViewModel
+<<<<<<< HEAD
 import no.solcellepanelerApp.ui.onboarding.OnboardingScreen
 import no.solcellepanelerApp.ui.result.EnergySavingsScreen
 import no.solcellepanelerApp.ui.result.ResultScreen
 
 import no.solcellepanelerApp.ui.result.WeatherViewModel
+=======
+import no.solcellepanelerApp.ui.result.ResultScreen
+import no.solcellepanelerApp.ui.result.ShowMonthlySavings
+import no.solcellepanelerApp.ui.result.ShowYearlySavings
+import no.solcellepanelerApp.ui.result.WeatherViewModel
+import no.solcellepanelerApp.ui.savedLocations.SavedLocationsScreen
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
 @Composable
 fun Nav(navController: NavHostController, fontScaleViewModel: FontScaleViewModel) {
@@ -52,9 +60,12 @@ fun Nav(navController: NavHostController, fontScaleViewModel: FontScaleViewModel
     val priceRepository = ElectricityPriceRepository("NO1")
 
     NavHost(navController, startDestination = "home") {
+<<<<<<< HEAD
         composable("onboarding") { OnboardingScreen(onFinished = { navController.popBackStack() }) }
 
 
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         composable("home") { HomeScreen(navController, fontScaleViewModel, WviewModel) }
         composable("map") {
             MapScreen(viewModel, navController, fontScaleViewModel, WviewModel)
@@ -62,9 +73,16 @@ fun Nav(navController: NavHostController, fontScaleViewModel: FontScaleViewModel
         composable("result") {
             ResultScreen(
                 navController, viewModel, WviewModel, fontScaleViewModel,
+<<<<<<< HEAD
                 priceScreenViewModel = priceRepository
             )
         }
+=======
+                priceScreenViewModel = priceRepository //hvorfor heter den viewmodel hvis den tar en repo?
+            )
+        }
+        composable("last_location") { SavedLocationsScreen(navController, fontScaleViewModel) }
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         composable("prices") {
             val repository = ElectricityPriceRepository("NO1")
             PriceScreen(
@@ -87,6 +105,7 @@ fun Nav(navController: NavHostController, fontScaleViewModel: FontScaleViewModel
             val energyPrice =
                 backStackEntry.arguments?.getString("energyPrice")?.toDoubleOrNull() ?: 0.0
 
+<<<<<<< HEAD
             val translatedMonth = when (month.lowercase()) {
                 "january" -> stringResource(R.string.month_january)
                 "february" -> stringResource(R.string.month_february)
@@ -113,6 +132,16 @@ fun Nav(navController: NavHostController, fontScaleViewModel: FontScaleViewModel
             )
         }
 
+=======
+            ShowMonthlySavings(
+                month,
+                energyProduced,
+                energyPrice,
+                navController,
+                fontScaleViewModel
+            )
+        }
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         composable(
             "yearly_savings/{energyProduced}/{energyPrice}",
             arguments = listOf(
@@ -125,6 +154,7 @@ fun Nav(navController: NavHostController, fontScaleViewModel: FontScaleViewModel
             val energyPrice =
                 backStackEntry.arguments?.getString("energyPrice")?.toDoubleOrNull() ?: 0.0
 
+<<<<<<< HEAD
             EnergySavingsScreen(
                 isMonthly = false,
                 energyProduced = energyProduced,
@@ -133,6 +163,9 @@ fun Nav(navController: NavHostController, fontScaleViewModel: FontScaleViewModel
                 fontScaleViewModel = fontScaleViewModel,
                 weatherViewModel = WviewModel
             )
+=======
+            ShowYearlySavings(energyProduced, energyPrice, navController, fontScaleViewModel)
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         }
     }
 }

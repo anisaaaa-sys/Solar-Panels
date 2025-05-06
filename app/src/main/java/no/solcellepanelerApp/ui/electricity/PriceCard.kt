@@ -26,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+<<<<<<< HEAD
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -35,6 +36,14 @@ import no.solcellepanelerApp.model.electricity.ElectricityPrice
 import no.solcellepanelerApp.model.electricity.Region
 import no.solcellepanelerApp.ui.handling.LoadingScreen
 import no.solcellepanelerApp.ui.home.ElectricityTowers
+=======
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import no.solcellepanelerApp.model.electricity.ElectricityPrice
+import no.solcellepanelerApp.model.electricity.Region
+import no.solcellepanelerApp.ui.handling.LoadingScreen
+import no.solcellepanelerApp.ui.home.LightningAnimation
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import no.solcellepanelerApp.ui.theme.ThemeMode
 import no.solcellepanelerApp.ui.theme.ThemeState
 import java.time.ZoneId
@@ -44,7 +53,11 @@ import java.time.ZonedDateTime
 fun PriceCard(
     prices: List<ElectricityPrice>,
     hourIndex: Int,
+<<<<<<< HEAD
     onHourChange: (Int) -> Unit,
+=======
+    onHourChange: (Int) -> Unit
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 ) {
     val currentHour = ZonedDateTime.now(ZoneId.of("Europe/Oslo")).hour
 
@@ -62,6 +75,7 @@ fun PriceCard(
     val lowestPrice = prices.minByOrNull { it.NOK_per_kWh }
 
     val label = when {
+<<<<<<< HEAD
         ZonedDateTime.parse(currentDisplayedPrice?.time_start).hour == currentHour -> stringResource(R.string.price_now_card)
         hourIndex > currentHour ->
             stringResource(R.string.future_price_prefix) +
@@ -73,6 +87,11 @@ fun PriceCard(
                 " ${currentHour - hourIndex} " +
                     stringResource(R.string.price_suffix_part1) +
                     (if (currentHour - hourIndex > 1) stringResource(R.string.price_suffix_part2) else "") + stringResource(R.string.past_price_suffix)
+=======
+        ZonedDateTime.parse(currentDisplayedPrice?.time_start).hour == currentHour -> "Pris nå"
+        hourIndex > currentHour -> "Pris om ${hourIndex - currentHour} time${if (hourIndex - currentHour > 1) "r" else ""}"
+        else -> "Pris for ${currentHour - hourIndex} time${if (currentHour - hourIndex > 1) "r" else ""} siden"
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     }
 
 
@@ -103,7 +122,11 @@ fun PriceCard(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
+<<<<<<< HEAD
                             text = stringResource(R.string.change_time_arrows),
+=======
+                            text = "Bruk pilene for å bytte time",
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -144,7 +167,11 @@ fun PriceCard(
             highestPrice?.let {
                 PriceRow(
                     icon = Icons.Default.ArrowUpward,
+<<<<<<< HEAD
                     label = stringResource(R.string.highest_price),
+=======
+                    label = "Høyeste pris",
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                     price = it.NOK_per_kWh,
                     time = it.getTimeRange()
                 )
@@ -153,7 +180,11 @@ fun PriceCard(
             lowestPrice?.let {
                 PriceRow(
                     icon = Icons.Default.ArrowDownward,
+<<<<<<< HEAD
                     label = stringResource(R.string.lowest_price),
+=======
+                    label = "Laveste pris",
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                     price = it.NOK_per_kWh,
                     time = it.getTimeRange()
                 )
@@ -169,9 +200,13 @@ fun PriceRow(
     price: Double,
     time: String,
 ) {
+<<<<<<< HEAD
     Row(
         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center,
     ) {
+=======
+    Row(verticalAlignment = Alignment.CenterVertically) {
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         if (icon != null) {
             Icon(
                 imageVector = icon,
@@ -180,6 +215,7 @@ fun PriceRow(
             )
         }
         Spacer(modifier = Modifier.width(8.dp))
+<<<<<<< HEAD
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -193,13 +229,26 @@ fun PriceRow(
 //                fontSize = 18.sp
             )
             Spacer(modifier = Modifier.height(8.dp))
+=======
+        Column {
+            Text(
+                text = "$label:",
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.primary,
+                fontSize = 18.sp
+            )
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
             Text(
                 text = "${"%2f".format(price)} NOK/kWh",
                 style = MaterialTheme.typography.bodyMedium
             )
             Text(
+<<<<<<< HEAD
                 text = stringResource(R.string.time) + " $time",
+=======
+                text = "Tid: $time",
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                 style = MaterialTheme.typography.bodySmall
             )
         }
@@ -209,11 +258,19 @@ fun PriceRow(
 @Composable
 fun HomePriceCard(
     prices: List<ElectricityPrice>,
+<<<<<<< HEAD
     selectedRegion: Region?,
 ) {
     Column(
 //        horizontalAlignment = Alignment.CenterHorizontally,
 //        verticalArrangement = Arrangement.Center
+=======
+    selectedRegion: Region?
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     ) {
         if (selectedRegion == null) {
             LoadingScreen()
@@ -234,6 +291,7 @@ fun HomePriceCard(
     currentPrice?.let {
         Column(
             modifier = Modifier
+<<<<<<< HEAD
 //                .fillMaxSize()
             ,
             verticalArrangement = Arrangement.Top,
@@ -262,6 +320,26 @@ fun HomePriceCard(
 
                 ElectricityTowers()
 
+=======
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            val label = "Strømpris akkurat nå i ${selectedRegion?.name}"
+            Spacer(modifier = Modifier.height(8.dp))
+            PriceRow(
+                icon = null,
+                label = label,
+                price = it.NOK_per_kWh,
+                time = it.getTimeRange()
+            )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize(),
+                horizontalAlignment = Alignment.End
+            ) {
+                LightningAnimation()
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
             }
         }
     }

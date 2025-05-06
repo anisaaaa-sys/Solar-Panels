@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <resources>
     <color name="background_dark">#0E1416</color>
     <color name="background_light">#F4FBFA</color>
 </resources>
+=======
+<resources></resources>
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b

@@ -1,7 +1,10 @@
 package no.solcellepanelerApp.util
 
 import android.Manifest
+<<<<<<< HEAD
 import android.annotation.SuppressLint
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
@@ -13,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+<<<<<<< HEAD
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -23,19 +27,35 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import no.solcellepanelerApp.MainActivity
+=======
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.core.app.ActivityCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import no.solcellepanelerApp.data.location.LocationService
 import no.solcellepanelerApp.model.electricity.Region
 
 // Funksjon for å sjekke og lagre tillatelse
 fun isLocationPermissionGranted(context: Context): Boolean {
+<<<<<<< HEAD
     val sharedPreferences =
         context.getSharedPreferences("LocationPreferences", Context.MODE_PRIVATE)
+=======
+    val sharedPreferences = context.getSharedPreferences("LocationPreferences", Context.MODE_PRIVATE)
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     return sharedPreferences.getBoolean("LocationPermissionGranted", false)
 }
 
 fun setLocationPermissionGranted(context: Context, granted: Boolean) {
+<<<<<<< HEAD
     val sharedPreferences =
         context.getSharedPreferences("LocationPreferences", Context.MODE_PRIVATE)
+=======
+    val sharedPreferences = context.getSharedPreferences("LocationPreferences", Context.MODE_PRIVATE)
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     val editor = sharedPreferences.edit()
     editor.putBoolean("LocationPermissionGranted", granted)
     editor.apply()
@@ -44,7 +64,11 @@ fun setLocationPermissionGranted(context: Context, granted: Boolean) {
 // Funksjon for å be om lokasjonstillatelse og hente region
 @Composable
 fun RequestLocationPermission(
+<<<<<<< HEAD
     onLocationFetched: (Region) -> Unit,
+=======
+    onLocationFetched: (Region) -> Unit
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
     val activity = context as? Activity
@@ -83,7 +107,11 @@ fun RequestLocationPermission(
 private fun fetchLocation(
     context: Context,
     activity: Activity?,
+<<<<<<< HEAD
     onLocationFetched: (Region) -> Unit,
+=======
+    onLocationFetched: (Region) -> Unit
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 ) {
     val locationService = LocationService(activity!!)
     try {
@@ -125,7 +153,10 @@ fun mapLocationToRegion(location: Location): Region {
         else -> Region.OSLO
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 suspend fun fetchCoordinates(
     context: Context,
     activity: Activity?,
@@ -135,6 +166,7 @@ suspend fun fetchCoordinates(
     return try {
         locationService.getCurrentLocation()
 
+<<<<<<< HEAD
     } catch (e: Exception) {
         Log.e("LocationPermission", "Feil ved henting av lokasjon", e)
         null
@@ -206,4 +238,10 @@ fun RememberLocationWithPermission(
 //    }
 
     return Pair(currentLocation, locationPermissionGranted)
+=======
+    }catch (e: Exception) {
+        Log.e("LocationPermission", "Feil ved henting av lokasjon", e)
+        null
+    }
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 }

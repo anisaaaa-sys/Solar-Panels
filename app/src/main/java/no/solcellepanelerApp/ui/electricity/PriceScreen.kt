@@ -96,6 +96,7 @@ fun PriceScreen(
 
                 val priceUiState by viewModel.priceUiState.collectAsStateWithLifecycle()
 
+<<<<<<< HEAD
                 //De her fyller ikke hele boksen av en eller annen grunn
                 when (priceUiState) {
                     is PriceUiState.Loading ->
@@ -106,13 +107,22 @@ fun PriceScreen(
                         ErrorScreen()
 
 
+=======
+                when (priceUiState) {
+                    is PriceUiState.Loading -> LoadingScreen()
+                    is PriceUiState.Error -> ErrorScreen()
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                     is PriceUiState.Success -> {
                         val prices = (priceUiState as PriceUiState.Success).prices
                         ElectricityPriceChart(prices = prices)
                         Spacer(modifier = Modifier.height(16.dp))
                         val currentHour = ZonedDateTime.now(ZoneId.of("Europe/Oslo")).hour
+<<<<<<< HEAD
                         val initialIndex =
                             prices.indexOfFirst { ZonedDateTime.parse(it.time_start).hour == currentHour }
+=======
+                        val initialIndex = prices.indexOfFirst { ZonedDateTime.parse(it.time_start).hour == currentHour }
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                         var hourIndex by remember { mutableStateOf(initialIndex.coerceAtLeast(0)) }
                         PriceCard(
                             prices = prices,
@@ -125,10 +135,14 @@ fun PriceScreen(
                 LoadingScreen()
             }
 
+<<<<<<< HEAD
             HelpBottomSheet(
                 navController = navController,
                 visible = showHelp,
                 onDismiss = { showHelp = false })
+=======
+            HelpBottomSheet(visible = showHelp, onDismiss = { showHelp = false })
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
             AppearanceBottomSheet(
                 visible = showAppearance,
                 onDismiss = { showAppearance = false },
@@ -142,7 +156,11 @@ fun PriceScreen(
 @Composable
 fun RegionDropdown(
     selectedRegion: Region,
+<<<<<<< HEAD
     onRegionSelected: (Region) -> Unit,
+=======
+    onRegionSelected: (Region) -> Unit
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 ) {
     var expanded by remember { mutableStateOf(false) }
     ExposedDropdownMenuBox(
@@ -153,7 +171,11 @@ fun RegionDropdown(
             value = selectedRegion.displayName,
             onValueChange = {},
             readOnly = true,
+<<<<<<< HEAD
             label = { Text(stringResource(R.string.region), color = MaterialTheme.colorScheme.tertiary) },
+=======
+            label = { Text("Velg distrikt", color = MaterialTheme.colorScheme.tertiary) },
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded) },
             textStyle = TextStyle(color = MaterialTheme.colorScheme.tertiary, fontSize = 18.sp),
             modifier = Modifier

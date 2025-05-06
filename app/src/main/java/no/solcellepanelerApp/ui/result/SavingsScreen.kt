@@ -1,5 +1,6 @@
 package no.solcellepanelerApp.ui.result
 
+<<<<<<< HEAD
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
@@ -34,11 +35,22 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableDoubleStateOf
+=======
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+<<<<<<< HEAD
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -71,11 +83,22 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.google.accompanist.flowlayout.FlowRow
 import no.solcellepanelerApp.R
 import no.solcellepanelerApp.ui.electricity.ChartType
+=======
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import no.solcellepanelerApp.R
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import no.solcellepanelerApp.ui.font.FontScaleViewModel
 import no.solcellepanelerApp.ui.navigation.AppearanceBottomSheet
 import no.solcellepanelerApp.ui.navigation.BottomBar
 import no.solcellepanelerApp.ui.navigation.HelpBottomSheet
 import no.solcellepanelerApp.ui.navigation.TopBar
+<<<<<<< HEAD
 import no.solcellepanelerApp.ui.reusables.IconTextRow
 import no.solcellepanelerApp.ui.reusables.SimpleTutorialOverlay
 import no.solcellepanelerApp.ui.theme.ThemeMode
@@ -87,10 +110,18 @@ import no.solcellepanelerApp.ui.theme.ThemeState
 fun EnergySavingsScreen(
     isMonthly: Boolean, // Toggle between monthly and yearly view
     month: String = "", // Only needed for monthly view
+=======
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ShowMonthlySavings(
+    month: String,
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     energyProduced: Double,
     energyPrice: Double,
     navController: NavController,
     fontScaleViewModel: FontScaleViewModel,
+<<<<<<< HEAD
     weatherViewModel: WeatherViewModel,
 ) {
     val savings: Double = energyProduced * energyPrice
@@ -173,12 +204,24 @@ fun EnergySavingsScreen(
         stringResource(R.string.monthly_savings, month)
     else
         stringResource(R.string.yearly_savings)
+=======
+) {
+    val savings: Double = energyProduced * energyPrice
+    val fontScale = fontScaleViewModel.fontScale.floatValue.toFloat()
+
+    var showHelp by remember { mutableStateOf(false) }
+    var showAppearance by remember { mutableStateOf(false) }
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
     Scaffold(
         topBar = {
             TopBar(
                 navController,
+<<<<<<< HEAD
                 text = screenTitle
+=======
+                text = stringResource(R.string.monthly_savings, month)
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
             )
         },
         bottomBar = {
@@ -189,6 +232,7 @@ fun EnergySavingsScreen(
             )
         }
     ) { paddingValues ->
+<<<<<<< HEAD
         if (showOverlay) {
             SimpleTutorialOverlay(
                 onDismiss = { showOverlay = false },
@@ -445,10 +489,35 @@ fun EnergySavingsScreen(
                 )
             }
         }
+=======
+        Column(
+            modifier = Modifier
+                .padding(paddingValues),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = stringResource(R.string.monthly_savings_text, savings, month),
+                fontSize = 24.sp * fontScale,
+                textAlign = TextAlign.Center,
+                style = TextStyle(fontWeight = FontWeight.Bold)
+            )
+
+            ShowProduce(energyProduced, navController, fontScaleViewModel)
+
+            HelpBottomSheet(visible = showHelp, onDismiss = { showHelp = false })
+            AppearanceBottomSheet(
+                visible = showAppearance,
+                onDismiss = { showAppearance = false },
+                fontScaleViewModel = fontScaleViewModel
+            )
+        }
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     }
 }
 
 @Composable
+<<<<<<< HEAD
 fun EnergyFlowAnimationDown() {
     val composition by rememberLottieComposition(LottieCompositionSpec.Asset("energy_down.json"))
     val progress by animateLottieCompositionAsState(
@@ -798,3 +867,56 @@ fun MultiLineChart(
         )
     }
 }
+=======
+fun ShowYearlySavings(
+    energyProduced: Double,
+    energyPrice: Double,
+    navController: NavController,
+    fontScaleViewModel: FontScaleViewModel,
+) {
+    val savings: Double = energyProduced * energyPrice
+    val fontScale = fontScaleViewModel.fontScale.floatValue.toFloat()
+
+    var showHelp by remember { mutableStateOf(false) }
+    var showAppearance by remember { mutableStateOf(false) }
+
+    Scaffold(
+        topBar = {
+            TopBar(
+                navController,
+                text = stringResource(R.string.yearly_savings)
+            )
+        },
+        bottomBar = {
+            BottomBar(
+                onHelpClicked = { showHelp = true },
+                onAppearanceClicked = { showAppearance = true },
+                navController = navController
+            )
+        }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .padding(paddingValues),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = stringResource(R.string.yearly_savings_text, savings),
+                fontSize = 24.sp * fontScale,
+                textAlign = TextAlign.Center,
+                style = TextStyle(fontWeight = FontWeight.Bold)
+            )
+
+            ShowProduce(energyProduced, navController, fontScaleViewModel)
+
+            HelpBottomSheet(visible = showHelp, onDismiss = { showHelp = false })
+            AppearanceBottomSheet(
+                visible = showAppearance,
+                onDismiss = { showAppearance = false },
+                fontScaleViewModel = fontScaleViewModel
+            )
+        }
+    }
+}
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b

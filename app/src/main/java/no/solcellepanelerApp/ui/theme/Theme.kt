@@ -6,9 +6,17 @@ import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+<<<<<<< HEAD
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+=======
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.ui.platform.LocalDensity
 
 private val lightScheme = lightColorScheme(
@@ -85,10 +93,27 @@ private val darkScheme = darkColorScheme(
     surfaceContainer = surfaceContainerDark,
     surfaceContainerHigh = surfaceContainerHighDark,
     surfaceContainerHighest = surfaceContainerHighestDark,
+<<<<<<< HEAD
 
 
     )
 
+=======
+)
+
+
+@Immutable
+data class ColorFamily(
+    val color: Color,
+    val onColor: Color,
+    val colorContainer: Color,
+    val onColorContainer: Color,
+)
+
+val unspecified_scheme = ColorFamily(
+    Color.Unspecified, Color.Unspecified, Color.Unspecified, Color.Unspecified
+)
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
 enum class ThemeMode {
     LIGHT, DARK, SYSTEM

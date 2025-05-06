@@ -48,13 +48,20 @@ android {
 
 dependencies {
 
+<<<<<<< HEAD
     implementation(libs.androidx.core.splashscreen)
 
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     implementation("androidx.compose.ui:ui:1.5.15")
     implementation("androidx.compose.material3:material3:1.1.2")
     implementation("androidx.compose.foundation:foundation:1.5.0")
     implementation("androidx.activity:activity-compose:1.7.2")
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -134,8 +141,11 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.8")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
     testImplementation("io.ktor:ktor-client-mock:2.3.4")
+<<<<<<< HEAD
 
 
     implementation(libs.androidx.appcompat)
 
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 }

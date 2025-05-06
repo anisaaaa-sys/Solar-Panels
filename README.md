@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
 
 
@@ -65,10 +66,19 @@ What did you learn while building this project? What challenges did you face and
 
 Takes two numbers and returns the sum.
 
+=======
+**MEDLEMMER AV TEAM 37**
+
+[aazann,saleemti,mikass,anisai,jacobhl,amwarsam]
+    
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     INNHOLD
     Beskriver hvordan appen kjøres og avhengigheter (f.eks. krever
     lokasjon). Bør også inneholde informasjon om biblioteker som er
     brukt og en enkel forklaring for bibliotekene som ikke er vist i
     kurset.
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b

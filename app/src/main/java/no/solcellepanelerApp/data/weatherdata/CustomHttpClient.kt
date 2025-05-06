@@ -53,9 +53,12 @@ class CustomHttpClient {
                     HttpStatusCode.Unauthorized, HttpStatusCode.Forbidden -> {
                         Result.failure(ApiException(ApiError.AUTHORIZATION_ERROR))
                     }
+<<<<<<< HEAD
                     HttpStatusCode.BadRequest -> {
                         Result.failure(ApiException(ApiError.REQUEST_ERROR))
                     }
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                     HttpStatusCode.NotFound, HttpStatusCode.PreconditionFailed -> {
                         Result.success(null)
                     }
@@ -67,7 +70,11 @@ class CustomHttpClient {
                         attempt++
                         continue
                     }
+<<<<<<< HEAD
                     HttpStatusCode.InternalServerError, HttpStatusCode.BadGateway, HttpStatusCode.ServiceUnavailable -> {
+=======
+                    HttpStatusCode.InternalServerError -> {
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                         Result.failure(ApiException(ApiError.SERVER_ERROR))
                     }
                     else -> {
@@ -80,9 +87,12 @@ class CustomHttpClient {
             } catch (e: IOException) {
                 if (attempt >= maxRetries) return Result.failure(ApiException(ApiError.NETWORK_ERROR))
                 println("Network error: ${e.message}, retrying in ${delayTime}ms...")
+<<<<<<< HEAD
             } catch (e: java.nio.channels.UnresolvedAddressException) {
                 println("Network error: Host not found")
                 return Result.failure(ApiException(ApiError.NETWORK_ERROR))
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
             } catch (e: Exception) {
                 println(e)
                 return Result.failure(ApiException(ApiError.UNKNOWN_ERROR))

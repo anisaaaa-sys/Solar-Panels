@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<<<<<<< HEAD
 
     <style name="Theme.MySplashScreen" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/background_dark</item>
@@ -10,4 +11,7 @@
 
     <style name="Theme.SolcellepanelerApp" parent="android:Theme.Material.Light.NoActionBar" />
 
+=======
+    <style name="Theme.SolcellepanelerApp" parent="android:Theme.Material.Light.NoActionBar" />
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 </resources>

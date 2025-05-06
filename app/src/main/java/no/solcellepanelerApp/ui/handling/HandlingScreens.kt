@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+<<<<<<< HEAD
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.CloudOff
@@ -17,11 +18,15 @@ import androidx.compose.material.icons.filled.Waves
 import androidx.compose.material.icons.filled.WifiOff
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
+=======
+import androidx.compose.material3.CircularProgressIndicator
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+<<<<<<< HEAD
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -29,6 +34,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import no.solcellepanelerApp.R
 
+=======
+import androidx.compose.ui.unit.dp
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
 @Composable
 fun LoadingScreen() {
@@ -41,24 +49,33 @@ fun LoadingScreen() {
         ) {
             CircularProgressIndicator(color = MaterialTheme.colorScheme.tertiary)
             Spacer(modifier = Modifier.height(8.dp))
+<<<<<<< HEAD
             Text(
                 stringResource(R.string.loading),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.bodyLarge,
             )
+=======
+            Text("Laster inn data, vennligst vent...")
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         }
     }
 }
 
 @Composable
+<<<<<<< HEAD
 fun ErrorScreenTemplate(
     icon: ImageVector,
     message: String
 ) {
+=======
+fun ErrorScreen() {
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
+<<<<<<< HEAD
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Icon(
                 imageVector = icon,
@@ -170,3 +187,24 @@ fun PreviewRequestErrorScreen() {
 fun PreviewSeaErrorScreen() {
     SeaErrorScreen()
 }
+=======
+        Text(
+            text = "Noe gikk galt! Prøv igjen senere.",
+            style = MaterialTheme.typography.bodyLarge
+        )
+    }
+}
+
+@Composable
+fun InternetErrorScreen() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = "Nettverksfeil! Prøv å koble til nett",
+            style = MaterialTheme.typography.bodyLarge
+        )
+    }
+}
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b

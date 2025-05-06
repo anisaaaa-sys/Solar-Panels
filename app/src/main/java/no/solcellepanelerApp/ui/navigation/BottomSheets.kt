@@ -1,6 +1,7 @@
 package no.solcellepanelerApp.ui.navigation
 
 import android.app.Activity
+<<<<<<< HEAD
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -9,6 +10,8 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,21 +24,31 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
+<<<<<<< HEAD
 import androidx.compose.foundation.shape.RoundedCornerShape
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Info
+<<<<<<< HEAD
 import androidx.compose.material.icons.filled.OpenInNew
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
+=======
+import androidx.compose.material3.Button
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+<<<<<<< HEAD
 import androidx.compose.material3.OutlinedCard
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -51,17 +64,26 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+<<<<<<< HEAD
 import androidx.compose.ui.draw.shadow
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
+<<<<<<< HEAD
 import androidx.compose.ui.platform.LocalUriHandler
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
+<<<<<<< HEAD
 import androidx.core.content.ContextCompat
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import androidx.navigation.NavController
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -77,10 +99,15 @@ import no.solcellepanelerApp.ui.reusables.DecimalFormatter
 import no.solcellepanelerApp.ui.reusables.DecimalInputField
 import no.solcellepanelerApp.ui.reusables.ExpandInfoSection
 import no.solcellepanelerApp.ui.reusables.ModeCard
+<<<<<<< HEAD
 import no.solcellepanelerApp.ui.reusables.MySection
 import no.solcellepanelerApp.ui.theme.ThemeMode
 import no.solcellepanelerApp.ui.theme.ThemeState
 import no.solcellepanelerApp.util.RememberLocationWithPermission
+=======
+import no.solcellepanelerApp.ui.theme.ThemeMode
+import no.solcellepanelerApp.ui.theme.ThemeState
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -89,6 +116,7 @@ fun HelpBottomSheet(
     visible: Boolean,
     onDismiss: () -> Unit,
     expandSection: String = "",
+<<<<<<< HEAD
     navController: NavController,
 ) {
 
@@ -108,6 +136,14 @@ fun HelpBottomSheet(
     val sheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = true
     )
+=======
+) {
+
+    val sheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = true
+    )
+
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     if (visible) {
         ModalBottomSheet(
             onDismissRequest = onDismiss,
@@ -132,6 +168,7 @@ fun HelpBottomSheet(
                         .padding(16.dp)
                 ) {
                     item {
+<<<<<<< HEAD
                         val context = LocalContext.current
                         val locationGranted = ContextCompat.checkSelfPermission(
                             context,
@@ -207,6 +244,18 @@ fun HelpBottomSheet(
                         ExpandInfoSection(
 //                            title = stringResource(id = R.string.tech_problems_title),
                             title = "*Noe noe*",
+=======
+                        ExpandInfoSection(
+                            title = stringResource(id = R.string.help_draw),
+
+                            content = stringResource(id = R.string.how_to_draw),
+                            initiallyExpanded = expandSection == "draw"
+                        )
+                    }
+                    item {
+                        ExpandInfoSection(
+                            title = stringResource(id = R.string.tech_problems_title),
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                             content = stringResource(id = R.string.tech_problems_content)
                         )
                     }
@@ -340,7 +389,11 @@ fun AppearanceBottomSheet(
                         Button(onClick = {
                             fontScaleViewModel.resetFontScale()
                         }) {
+<<<<<<< HEAD
                             Text(stringResource(R.string.reset), style = MaterialTheme.typography.bodySmall)
+=======
+                            Text("Reset", style = MaterialTheme.typography.bodySmall)
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                         }
 
                         Button(onClick = {
@@ -425,13 +478,19 @@ fun AdditionalInputBottomSheet(
     onDismiss: () -> Unit,
     onStartDrawing: () -> Unit,
     coordinates: Pair<Double, Double>?,
+<<<<<<< HEAD
     height: Double?,
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     area: String,
     navController: NavController,
     viewModel: MapScreenViewModel,
     weatherViewModel: WeatherViewModel,
+<<<<<<< HEAD
     selectedRegion: Region?,
     onRegionSelected: (Region) -> Unit,
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 ) {
     var angle by remember { mutableStateOf(0f) }
     var areaState by remember { mutableStateOf(area) }
@@ -441,6 +500,7 @@ fun AdditionalInputBottomSheet(
     val context = LocalContext.current
     val activity = context as? Activity
 
+<<<<<<< HEAD
     data class SolarPanelType(val name: String, val efficiency: Float, val description: String)
 
     val panelTypes = listOf(
@@ -449,6 +509,8 @@ fun AdditionalInputBottomSheet(
         SolarPanelType(stringResource(R.string.thinfilm), 10f, stringResource(R.string.thinfilm_content))
     )
 
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     LaunchedEffect(area) {
         areaState = area
     }
@@ -534,7 +596,11 @@ fun AdditionalInputBottomSheet(
 
                     Text(
                         text = stringResource(id = R.string.slope_label),
+<<<<<<< HEAD
                         style = MaterialTheme.typography.titleLarge
+=======
+                        style = MaterialTheme.typography.titleMedium
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                     )
 
                     Slider(
@@ -556,6 +622,7 @@ fun AdditionalInputBottomSheet(
 
                     Text(
                         stringResource(id = R.string.efficiency_label),
+<<<<<<< HEAD
                         style = MaterialTheme.typography.titleLarge
                     )
 
@@ -659,6 +726,23 @@ fun AdditionalInputBottomSheet(
 
                     InfoHelpButton(
                         label = stringResource(id = R.string.efficiency) + " ~ ${efficiency.toInt()}%",
+=======
+                        style = MaterialTheme.typography.titleMedium
+                    )
+
+                    Slider(
+                        value = efficiency,
+                        onValueChange = {
+                            efficiency = it
+                            focusManager.clearFocus()
+                        },
+                        valueRange = 0f..100f,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+
+                    InfoHelpButton(
+                        label = stringResource(id = R.string.effectivity) + " ${efficiency.toInt()}%",
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                         helpText = stringResource(id = R.string.panelEfficencyHelp)
                     )
 
@@ -666,7 +750,11 @@ fun AdditionalInputBottomSheet(
 
                     Text(
                         text = stringResource(id = R.string.direction_label),
+<<<<<<< HEAD
                         style = MaterialTheme.typography.titleLarge
+=======
+                        style = MaterialTheme.typography.titleMedium
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                     )
 
                     Slider(
@@ -680,16 +768,21 @@ fun AdditionalInputBottomSheet(
                     )
 
                     InfoHelpButton(
+<<<<<<< HEAD
                         label = stringResource(id = R.string.direction) + " ${azimuthPosition.toInt()}° (${
                             getCompassDirection(
                                 azimuthPosition.toInt()
                             )
                         })",
+=======
+                        label = stringResource(id = R.string.direction) + " ${azimuthPosition.toInt()}° (${getCompassDirection(azimuthPosition.toInt())})",
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                         helpText = stringResource(id = R.string.panelDirectionHelp)
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
 
+<<<<<<< HEAD
                     selectedRegion?.let {
                         RegionDropdown(it) { newRegion ->
                             onRegionSelected(newRegion)
@@ -697,6 +790,17 @@ fun AdditionalInputBottomSheet(
                     }
 
 //                    Spacer(modifier = Modifier.height(32.dp))
+=======
+                    var selectedRegion by remember { mutableStateOf(Region.OSLO) }
+                    RegionDropdown(
+                        selectedRegion = viewModel.selectedRegion,
+                        onRegionSelected = { newRegion ->
+                            viewModel.selectedRegion = newRegion
+                        }
+                    )
+
+                    Spacer(modifier = Modifier.height(32.dp))
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
                     if (areaState.isNotEmpty() && coordinates != null) {
                         Button(
@@ -711,7 +815,11 @@ fun AdditionalInputBottomSheet(
                                 val slope = angle
 
                                 weatherViewModel.loadWeatherData(
+<<<<<<< HEAD
                                     lat, lon, height,
+=======
+                                    lat, lon,
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                                     slope.toInt(),
                                     azimuthPosition.toInt()
                                 )
@@ -720,7 +828,11 @@ fun AdditionalInputBottomSheet(
                             },
                             modifier = Modifier.align(Alignment.CenterHorizontally)
                         ) {
+<<<<<<< HEAD
                             Text(stringResource(R.string.navigate_results))
+=======
+                            Text("Gå til resultater")
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                         }
                     }
 

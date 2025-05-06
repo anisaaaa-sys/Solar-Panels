@@ -24,9 +24,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+<<<<<<< HEAD
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+=======
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import co.yml.charts.axis.AxisData
 import co.yml.charts.common.model.Point
 import co.yml.charts.ui.barchart.BarChart
@@ -43,7 +49,10 @@ import co.yml.charts.ui.linechart.model.LineStyle
 import co.yml.charts.ui.linechart.model.SelectionHighlightPoint
 import co.yml.charts.ui.linechart.model.SelectionHighlightPopUp
 import co.yml.charts.ui.linechart.model.ShadowUnderLine
+<<<<<<< HEAD
 import no.solcellepanelerApp.R
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import no.solcellepanelerApp.model.electricity.ElectricityPrice
 import no.solcellepanelerApp.ui.theme.ThemeMode
 import no.solcellepanelerApp.ui.theme.ThemeState
@@ -54,6 +63,10 @@ import java.time.ZonedDateTime
 fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
     var chartType by remember { mutableStateOf(ChartType.LINE) }
     val selectedPoint = remember { mutableStateOf<Point?>(null) }
+<<<<<<< HEAD
+=======
+    val selectedBar = remember { mutableStateOf<BarData?>(null) }
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
     val points = prices.map { price ->
         val hour = ZonedDateTime.parse(price.time_start).hour
@@ -72,15 +85,35 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
         )
     }
 
+<<<<<<< HEAD
     //Prepare X-axis (hours) - Showing fewer labels to prevent crowding
     val xAxisData = AxisData.Builder()
         .axisStepSize(12.dp)
         .steps(prices.size / 2)//Showing fewer steps
         .labelData { i -> if (i % 2 == 0) "%02d".format(i) else "" }
+=======
+    val barStyle = BarStyle(
+        paddingBetweenBars = 1.5.dp,
+        barWidth = 10.dp
+    )
+
+    //Prepare X-axis (hours) - Showing fewer labels to prevent crowding
+    val xAxisData = AxisData.Builder()
+        .axisStepSize(14.dp)
+        .steps(prices.size / 2) // Showing fewer steps (was /2)//Showing fewer steps
+        .labelData { i ->
+            if (i % 2 == 0) "%02d".format(i) else ""
+        }
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         .axisLabelColor(MaterialTheme.colorScheme.tertiary)
         .axisLineColor(MaterialTheme.colorScheme.tertiary)
         .axisLabelAngle(40f)
         .bottomPadding(32.dp)
+<<<<<<< HEAD
+=======
+//        .startPadding(45.dp)
+//        .endPadding(20.dp)
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         .build()
 
     //Prepare Y-axis (price)
@@ -90,7 +123,11 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
     val steps = 1
     val stepSize = ((maxPrice - minPrice) / steps).coerceAtLeast(0.1)
 
+<<<<<<< HEAD
     val yAxisData = AxisData.Builder()
+=======
+    val yAxisDataLine = AxisData.Builder()
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
         .steps(steps)
         .topPadding(20.dp)
         .labelData { i ->
@@ -101,15 +138,35 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
         .axisLineColor(MaterialTheme.colorScheme.tertiary)
         .build()
 
+<<<<<<< HEAD
+=======
+    val yAxisDataBar = AxisData.Builder()
+        .steps(steps)
+        .topPadding(20.dp)
+        .labelData { i -> "%.2f".format(i.toDouble()) }
+        .axisStepSize(((maxPrice - minPrice).toFloat() / 5).dp)
+        .axisLabelColor(MaterialTheme.colorScheme.tertiary)
+        .axisLineColor(MaterialTheme.colorScheme.tertiary)
+        .build()
+
+
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     Button(
         onClick = {
             chartType = if (chartType == ChartType.LINE) ChartType.BAR else ChartType.LINE
         },
         modifier = Modifier.padding(8.dp)
     ) {
+<<<<<<< HEAD
         Text(text = if (chartType == ChartType.LINE) stringResource(R.string.bar_chart) else stringResource(R.string.line_chart))
     }
 
+=======
+        Text(text = if (chartType == ChartType.LINE) "Vis søylediagram" else "Vis linjediagram")
+    }
+
+    // Increased overall card height to provide more space for axis labels
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -194,7 +251,11 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
                             ),
                         ),
                         xAxisData = xAxisData,
+<<<<<<< HEAD
                         yAxisData = yAxisData,
+=======
+                        yAxisData = yAxisDataLine,
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                         gridLines = GridLines(color = Color.LightGray),
                         backgroundColor = MaterialTheme.colorScheme.surface,
                         bottomPadding = 30.dp
@@ -203,7 +264,10 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
                     LineChart(
                         modifier = Modifier
                             .fillMaxWidth()
+<<<<<<< HEAD
                             .padding(8.dp)
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                             .height(300.dp),
                         lineChartData = lineChartData
                     )
@@ -213,11 +277,16 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
                     val barChartData = BarChartData(
                         chartData = bars,
                         xAxisData = xAxisData,
+<<<<<<< HEAD
                         yAxisData = yAxisData,
                         barStyle = BarStyle(
                             paddingBetweenBars = 1.5.dp,
                             barWidth = 10.dp
                         ),
+=======
+                        yAxisData = yAxisDataBar,
+                        barStyle = barStyle,
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                         backgroundColor = MaterialTheme.colorScheme.surface,
                         paddingEnd = 16.dp
                     )
@@ -225,7 +294,10 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
                     BarChart(
                         modifier = Modifier
                             .fillMaxWidth()
+<<<<<<< HEAD
                             .padding(8.dp)
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                             .height(300.dp),
                         barChartData = barChartData
                     )
@@ -235,9 +307,15 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
 
 
 
+<<<<<<< HEAD
             // X-axis name
             Text(
                 text = stringResource(R.string.x_axis_name),
+=======
+            // X-axis name - moved down to provide more space
+            Text(
+                text = "Tid (timer)",
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
@@ -247,7 +325,11 @@ fun ElectricityPriceChart(prices: List<ElectricityPrice>) {
 
             // Y-axis name
             Text(
+<<<<<<< HEAD
                 text = stringResource(R.string.y_axis_name),
+=======
+                text = "Strømpris (kr/kWh)",
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier
                     .align(Alignment.CenterStart)

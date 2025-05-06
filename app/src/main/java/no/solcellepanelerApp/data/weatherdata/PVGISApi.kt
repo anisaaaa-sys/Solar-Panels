@@ -39,12 +39,18 @@ class PVGISApi {
         // URL for grid connected solar energy: https://re.jrc.ec.europa.eu/api/v5_3/PVcalc?lat=59.943&lon=10.718&angle=35&azimuth=0&peakpower=1&loss=14&outputformat=json
 
         val url = "https://re.jrc.ec.europa.eu/api/v5_3/PVcalc?lat=$lat&lon=$lon&angle=$slope&azimuth=$azimuth&peakpower=1&loss=14&outputformat=json"
+<<<<<<< HEAD
         println(url)
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 
         val result: Result<PVGISResponse?> = client.httpRequest(url)
         val radiationData = Array<Double>(12) {0.0}
         result.onSuccess { body ->
+<<<<<<< HEAD
             println("PVGIS: $body")
+=======
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
             if (body == null) return Result.failure(ApiException(ApiError.UNKNOWN_ERROR))
             body.outputs.monthly.fixed.forEach { radVariables ->
                 radiationData[radVariables.date-1] = radVariables.radiation
@@ -52,8 +58,12 @@ class PVGISApi {
             println(radiationData.contentToString())
             return Result.success(radiationData)
         }.onFailure { error ->
+<<<<<<< HEAD
             if ((error as? ApiException)?.errorCode == ApiError.REQUEST_ERROR) return Result.failure(ApiException(ApiError.SEA_ERROR))
             println("PVGIS: $error")
+=======
+            println(error)
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
             return Result.failure(error)
         }
         return Result.failure(ApiException(ApiError.UNKNOWN_ERROR))

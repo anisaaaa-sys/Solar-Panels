@@ -19,6 +19,10 @@ dependencyResolutionManagement {
     }
 }
 
+<<<<<<< HEAD
 rootProject.name = "SolcellepanelerApp"
+=======
+rootProject.name = "Solcellepaneller"
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 include(":app")
  

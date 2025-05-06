@@ -1,11 +1,23 @@
 package no.solcellepanelerApp
 
+<<<<<<< HEAD
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import com.google.android.gms.maps.model.LatLng
 import no.solcellepanelerApp.ui.map.MapScreenViewModel
 import no.solcellepanelerApp.ui.result.calculateMonthlyEnergyOutput
 import no.solcellepanelerApp.ui.result.calculateSavedCO2
+=======
+import no.solcellepanelerApp.util.mapLocationToRegion
+import org.junit.Assert.assertEquals
+import org.junit.Test
+import android.location.Location
+import com.google.android.gms.maps.model.LatLng
+import no.solcellepanelerApp.model.electricity.Region
+import no.solcellepanelerApp.ui.map.MapScreenViewModel
+import no.solcellepanelerApp.ui.result.calculateMonthlyEnergyOutput
+import org.junit.Assert.assertEquals
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 import org.junit.Before
 
 /**
@@ -123,6 +135,7 @@ class EnergyDisplayTest {
 
 class EnergyCalculationTest {
 
+<<<<<<< HEAD
 //    @Test
 //    fun `calculateMonthlyEnergyOutput should return correct values`() {
 //        // Given
@@ -165,6 +178,50 @@ class EnergyCalculationTest {
 //        // Then
 //        assertEquals(emptyList<Double>(), result)
 //    }
+=======
+    @Test
+    fun `calculateMonthlyEnergyOutput should return correct values`() {
+        // Given
+        val avgTemp = arrayOf(10.0, 20.0, 30.0)
+        val cloudCover = arrayOf(2.0, 4.0, 6.0)
+        val snowCover = arrayOf(0.0, 1.0, 2.0)
+        val panelArea = 10.0
+        val efficiency = 20.0
+        val tempCoeff = -0.44
+        val radiation = listOf(100.0, 200.0, 300.0)
+
+        // When
+        val result = calculateMonthlyEnergyOutput(
+            avgTemp, cloudCover, snowCover,
+            panelArea, efficiency, tempCoeff, radiation
+        )
+
+        // Then
+        val expected = listOf(
+            100.0 * (1 - 2.0/8) * (1 - 0.0/4) * 10 * 0.2 * (1 + (-0.44) * (10 - 25)),
+            200.0 * (1 - 4.0/8) * (1 - 1.0/4) * 10 * 0.2 * (1 + (-0.44) * (20 - 25)),
+            300.0 * (1 - 6.0/8) * (1 - 2.0/4) * 10 * 0.2 * (1 + (-0.44) * (30 - 25))
+        )
+
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `calculateMonthlyEnergyOutput should handle empty inputs`() {
+        // Given
+        val emptyArray = emptyArray<Double>()
+        val emptyList = emptyList<Double>()
+
+        // When
+        val result = calculateMonthlyEnergyOutput(
+            emptyArray, emptyArray, emptyArray,
+            10.0, 20.0, -0.44, emptyList
+        )
+
+        // Then
+        assertEquals(emptyList<Double>(), result)
+    }
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
 }
 
 
@@ -183,10 +240,17 @@ class SunAnimationTest {
 
         testCases.forEach { (value, expected) ->
             val actual = when {
+<<<<<<< HEAD
                 value < 0.03 -> "solar_verylow.json"
                 value in 0.03..0.1 -> "solar_low.json"
                 value in 0.1..0.3 -> "solar_half.json"
                 value > 0.3 -> "solar_full.json"
+=======
+                value < 50.0 -> "solar_verylow.json"
+                value in 50.0..500.0 -> "solar_low.json"
+                value in 500.0..3000.0 -> "solar_half.json"
+                value > 3000.0 -> "solar_full.json"
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
                 else -> "solar_verylow.json"
             }
             assertEquals(expected, actual)
@@ -229,6 +293,7 @@ class MapScreenViewModelTest {
         // Then list should still have 10 points
         assertEquals(10, viewModel.polygondata.size)
     }
+<<<<<<< HEAD
 }
 class CalculateSavedCO2Test {
 
@@ -342,3 +407,6 @@ class SolarOutputCalculatorTest {
         assertEquals(expectedOutput, result[0], 0.001) // Should be 192.0
     }
 }
+=======
+}
+>>>>>>> 0eec2f562a6c5679733228427e18bb9ed3baa46b
