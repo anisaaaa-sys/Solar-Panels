@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.MySplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/background_dark</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_sol_logo_dark</item>
+        <item name="postSplashScreenTheme">@style/Theme.SolcellepanelerApp</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/cropped_team37dark
+        </item>
+    </style>
+</resources>

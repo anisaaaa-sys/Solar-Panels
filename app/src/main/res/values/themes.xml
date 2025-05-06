@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Solcellepaneller" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.MySplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/background_dark</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/sol_logo_dark</item>
+        <item name="postSplashScreenTheme">@style/Theme.SolcellepanelerApp</item>
+    </style>
+
+    <style name="Theme.SolcellepanelerApp" parent="android:Theme.Material.Light.NoActionBar" />
+
 </resources>
